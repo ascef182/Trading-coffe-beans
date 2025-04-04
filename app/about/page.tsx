@@ -21,7 +21,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center">
         <Image
-          src="https://cdn.tudosobrecafe.com/articles/63/images/16153863771146912356.jpg"
+          src="/photos/coffe.jpg"
           alt="Green coffee beans"
           fill
           className="object-cover brightness-50"
@@ -44,7 +44,7 @@ export default function AboutPage() {
             {/* Photo Column */}
             <div className="relative h-[500px] w-full group">
               <Image
-                src="https://media.licdn.com/dms/image/v2/C4E03AQHGdfBo4xZQrA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1631807353558?e=1749081600&v=beta&t=RcNMt0drv4kIGogkZxowYa1RMHbm3IO_QwDg9vsB9BM"
+                src="/photos/thiago.jpeg"
                 alt="Thiago Cazarini - Founder and Head Coffee Trader"
                 fill
                 className="object-cover rounded-lg shadow-xl transition-all duration-300 group-hover:shadow-2xl"

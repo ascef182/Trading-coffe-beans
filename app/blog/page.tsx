@@ -1,16 +1,36 @@
-import React from "react";
+import { BackButton } from "@/components/back-button";
 import Image from "next/image";
 import Link from "next/link";
-import { formatDistanceToNow } from "date-fns";
-import { getPosts } from "@/lib/blog-data";
-import { BackButton } from "@/components/back-button";
+
+// Importe os metadados com o nome correto
+import { postMetadata as brazilianPost } from "./posts/brazilian-coffee-varieties/page";
+import { postMetadata as colombianPost } from "./posts/colombian-coffee-varieties/page";
+import { postMetadata as greenCoffeePost } from "./posts/green-coffee-insights/page";
+
+// Defina o tipo para os metadados
+interface BlogPostMetadata {
+  slug: string;
+  title: string;
+  excerpt: string;
+  featuredImage: string;
+  publishedAt: string;
+  author: {
+    name: string;
+    role: string;
+  };
+}
+
+const allPosts: BlogPostMetadata[] = [
+  brazilianPost,
+  colombianPost,
+  greenCoffeePost,
+];
 
 export default function BlogPage() {
-  const posts = getPosts();
-
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gray-50">
       <BackButton />
+
       {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center">
         <Image
@@ -20,7 +40,7 @@ export default function BlogPage() {
           className="object-cover brightness-50"
           priority
         />
-        <div className="container relative z-10 text-center text-white">
+        <div className="container relative z-10 text-center text-white px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Coffee Insights
           </h1>
@@ -31,48 +51,44 @@ export default function BlogPage() {
       </section>
 
       {/* Blog Posts Grid */}
-      <section className="py-16 bg-background">
-        <div className="container">
+      <section className="py-16">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
+            {allPosts.map((post) => (
               <article
-                key={post.id}
-                className="bg-card rounded-lg overflow-hidden border"
+                key={post.slug}
+                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
               >
-                <Link href={`/blog/${post.slug}`} className="block">
-                  <div className="relative h-48">
+                <Link href={`/blog/posts/${post.slug}`} className="block">
+                  <div className="relative h-48 w-full">
                     <Image
-                      src={post.featured_image}
+                      src={post.featuredImage}
                       alt={post.title}
                       fill
-                      className="object-cover transition-transform duration-300 hover:scale-105"
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
-                </Link>
-                <div className="p-6">
-                  <h2 className="text-xl font-semibold mb-2">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="hover:text-primary transition-colors"
-                    >
+
+                  <div className="p-6">
+                    <h2 className="text-xl font-bold text-gray-800 mb-2">
                       {post.title}
-                    </Link>
-                  </h2>
-                  <p className="text-muted-foreground mb-4">{post.excerpt}</p>
-                  <div className="flex items-center justify-between">
-                    <time className="text-sm text-muted-foreground">
-                      {formatDistanceToNow(new Date(post.published_at), {
-                        addSuffix: true,
-                      })}
-                    </time>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="text-sm font-medium text-primary hover:underline"
-                    >
-                      Read more
-                    </Link>
+                    </h2>
+
+                    <p className="text-gray-600 mb-4 line-clamp-2">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-500">
+                        {new Date(post.publishedAt).toLocaleDateString()}
+                      </span>
+                      <span className="text-emerald-600 font-medium hover:underline">
+                        Read more →
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </article>
             ))}
           </div>

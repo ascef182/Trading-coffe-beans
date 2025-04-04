@@ -27,7 +27,7 @@ export default function Home() {
         {/* Background Image with Gradient Overlay */}
         <div className="absolute inset-0">
           <Image
-            src="https://blog.veroo.com.br/wp-content/uploads/2023/02/1030680-768x512.jpg"
+            src="/photos/pe_de_cafe_verde.jpg"
             alt="Premium Brazilian green coffee beans"
             fill
             className="object-cover"
@@ -222,7 +222,7 @@ export default function Home() {
             </div>
             <div className="relative h-[500px]">
               <Image
-                src="https://as1.ftcdn.net/v2/jpg/02/68/78/42/1000_F_268784224_swXNK0073vJxHzLPqGCAgK0JtQA9lwyU.jpg"
+                src="photos/varieties.jpg"
                 alt="Green coffee selection"
                 fill
                 className="object-cover rounded-lg"

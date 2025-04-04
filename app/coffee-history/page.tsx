@@ -42,9 +42,8 @@ type ImagePaths = {
 };
 
 const IMAGES: ImagePaths = {
-  hero: "https://pharmaceuticasl.com.br/wp-content/uploads/2019/08/Caf%C3%A9-Verde.jpg",
-  impact:
-    "https://loucosporcafe.com.br/wp-content/uploads/2024/07/DALL%C2%B7E-2024-07-18-16.11.42-An-informative-and-visually-appealing-image-that-represents-the-historical-and-geographical-characteristics-of-coffee-in-Brazil.-The-image-includes-a-.webp",
+  hero: "/photos/Café-Verde.webp",
+  impact: "/photos/sp.webp",
 };
 
 interface TimelineProps {
