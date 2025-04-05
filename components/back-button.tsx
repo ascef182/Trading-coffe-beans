@@ -5,7 +5,11 @@ import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
-export function BackButton() {
+interface BackButtonProps {
+  href?: string;
+}
+
+export function BackButton({ href }: BackButtonProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,17 +20,17 @@ export function BackButton() {
       setIsScrolled(scrollPosition > 100);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleClick = () => {
-    // If we're on a blog post page, go back to the blog listing
-    if (pathname.startsWith('/blog/') && pathname !== '/blog') {
-      router.push('/blog');
+    if (href) {
+      router.push(href);
+    } else if (pathname.startsWith("/blog/") && pathname !== "/blog") {
+      router.push("/blog");
     } else {
-      // Otherwise go to home
-      router.push('/');
+      router.push("/");
     }
   };
 
@@ -36,8 +40,8 @@ export function BackButton() {
       size="icon"
       onClick={handleClick}
       className={`fixed top-24 left-4 z-50 rounded-full bg-transparent transition-all duration-300 ${
-        isScrolled 
-          ? "border-primary hover:bg-primary/10 hover:text-primary text-primary" 
+        isScrolled
+          ? "border-primary hover:bg-primary/10 hover:text-primary text-primary"
           : "border-white hover:bg-white/20 text-white"
       }`}
       aria-label="Go back"

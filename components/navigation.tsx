@@ -5,10 +5,11 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import { useLanguage } from "@/contexts/language-context";
+import { getTranslatedRoute, getOriginalRoute } from "@/utils/routes";
 
-// Componentes de bandeira (mantidos do código anterior)
 const USFlag = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -62,29 +63,38 @@ const routes = {
     { href: "/contact", label: "Contact" },
   ],
   pt: [
-    { href: "/", label: "Início" },
-    { href: "/about", label: "Sobre" },
-    { href: "/coffee-history", label: "História do Café" },
-    { href: "/green-coffee", label: "Café Verde" },
-    { href: "/varieties", label: "Variedades" },
-    { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contato" },
+    { href: "/pt", label: "Início" },
+    { href: "/pt/sobre", label: "Sobre" },
+    { href: "/pt/historia-do-cafe", label: "História do Café" },
+    { href: "/pt/cafe-verde", label: "Café Verde" },
+    { href: "/pt/variedades", label: "Variedades" },
+    { href: "/pt/blog", label: "Blog" },
+    { href: "/pt/contato", label: "Contato" },
   ],
 };
 
 export function Navigation() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = React.useState(false);
-  const [language, setLanguage] = React.useState<"en" | "pt">("en");
 
   const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "en" ? "pt" : "en"));
+    const newLanguage = language === "en" ? "pt" : "en";
+    const currentRoute = getOriginalRoute(pathname);
+    const translatedRoute = getTranslatedRoute(currentRoute, newLanguage);
+    setLanguage(newLanguage);
+    router.push(translatedRoute);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
   };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <Link href="/" className="flex items-center h-full">
+        <Link href={language === "en" ? "/" : "/pt"} className="flex items-center h-full">
           <div className="h-16 w-auto">
             <Image
               src="/Logomarca-Cazarini-12.09.13.svg"
@@ -114,7 +124,6 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* Botão para alternar idioma */}
           <Button
             variant="ghost"
             size="sm"
@@ -136,34 +145,38 @@ export function Navigation() {
           </Button>
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" className="mr-2">
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent
               side="right"
               className="w-[80%] sm:w-[380px]"
-              title="Menu" // Adicionei a propriedade title obrigatória
+              title="Menu"
             >
               <nav className="flex flex-col space-y-4">
                 {routes[language].map((route) => (
                   <Link
                     key={route.href}
                     href={route.href}
+                    onClick={closeMenu}
                     className={`text-sm font-medium transition-colors hover:text-primary ${
                       pathname === route.href
                         ? "text-foreground"
                         : "text-foreground/60"
                     }`}
-                    onClick={() => setIsOpen(false)}
                   >
                     {route.label}
                   </Link>
                 ))}
                 <Button
                   variant="outline"
-                  onClick={toggleLanguage}
+                  onClick={() => {
+                    toggleLanguage();
+                    closeMenu();
+                  }}
                   className="mt-4 flex items-center justify-center gap-2"
                 >
                   {language === "en" ? (
