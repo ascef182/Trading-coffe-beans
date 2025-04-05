@@ -73,7 +73,7 @@ export default function GreenCoffeeInsights() {
       <BackButton />
 
       {/* Hero Section */}
-      <section className="relative h-[500px] md:h-[600px] flex items-center justify-center">
+      <section className="relative h-[400px] md:h-[500px] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
             src={POST_DATA.featuredImage}

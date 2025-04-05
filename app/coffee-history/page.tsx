@@ -20,19 +20,19 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
     year: "1800s",
     title: "Coffee Boom",
     description:
-      "Brazil becomes the world's largest coffee producer, with coffee becoming the country's main export.",
+      "Brazil becomes the world&apos;s largest coffee producer, with coffee becoming the country&apos;s main export.",
   },
   {
     year: "1920s",
     title: "Coffee Capital",
     description:
-      "São Paulo becomes known as the world's coffee capital, with coffee driving Brazil's economy.",
+      "S&atilde;o Paulo becomes known as the world&apos;s coffee capital, with coffee driving Brazil&apos;s economy.",
   },
   {
     year: "Present",
     title: "Global Leader",
     description:
-      "Brazil maintains its position as the world's largest coffee producer and exporter.",
+      "Brazil maintains its position as the world&apos;s largest coffee producer and exporter.",
   },
 ];
 
@@ -97,9 +97,10 @@ const Introduction = () => (
       The Coffee Journey
     </h2>
     <p className="text-base sm:text-lg text-muted-foreground mb-6 text-center">
-      Brazil's coffee story is one of ambition, innovation and transformation.
-      From its humble beginnings in the 18th century to becoming the world's
-      largest producer, coffee has shaped Brazil's history, economy and culture.
+      Brazil&apos;s coffee story is one of ambition, innovation and
+      transformation. From its humble beginnings in the 18th century to becoming
+      the world&apos;s largest producer, coffee has shaped Brazil&apos;s
+      history, economy and culture.
     </p>
   </div>
 );
@@ -173,16 +174,16 @@ const ImpactSection = () => (
     </div>
     <div className="flex flex-col justify-center">
       <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
-        Coffee's Impact
+        Coffee&apos;s Impact
       </h2>
       <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
         Coffee has been more than just a crop in Brazil; it has been a catalyst
         for development, immigration and cultural exchange. The coffee industry
         has shaped cities, built railroads and attracted millions of immigrants
-        who have enriched Brazil's cultural tapestry.
+        who have enriched Brazil&apos;s cultural tapestry.
       </p>
       <p className="text-sm sm:text-base text-muted-foreground">
-        Today, Brazil's coffee industry continues to evolve, embracing
+        Today, Brazil&apos;s coffee industry continues to evolve, embracing
         sustainable practices and new technologies while maintaining its
         position as a global leader in coffee production and export.
       </p>

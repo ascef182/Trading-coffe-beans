@@ -32,7 +32,7 @@ export default function BlogPage() {
       <BackButton />
 
       {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center">
+      <section className="relative h-[200px] flex items-center justify-center">
         <Image
           src="/photos/trading.jpg"
           alt="Coffee plantation"
