@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import { Calendar, User } from "lucide-react";
 import { BackButton } from "@/components/back-button";
 
@@ -20,17 +21,17 @@ interface BlogPost {
   };
 }
 
-// Metadados exportados para uso na listagem de posts
-export const postMetadata = {
+// Metadados para uso interno (não exportados)
+const postMetadata = {
   slug: "variedades-cafe-colombiano",
   title: "Variedades de Café Colombiano",
-  subtitle: "Explorando a rica diversidade do café colombiano",
+  subtitle: "Explorando os Cafés Premium da Colômbia",
   featuredImage: "/photos/colombia-13-1-optimized.jpg",
   excerpt:
-    "O café colombiano é famoso por seus sabores diversos e perfis regionais distintos. Conheça as variedades únicas que tornam o café da Colômbia reconhecido mundialmente.",
-  publishedAt: "2023-10-01T12:00:00Z",
+    "Descubra as características únicas das variedades de café colombiano, desde o tradicional Typica até o inovador Castillo.",
+  publishedAt: "2023-09-12T10:00:00Z",
   author: {
-    name: "Jane Smith",
+    name: "Ana Martinez",
     role: "Especialista em Café",
   },
 };
@@ -38,24 +39,33 @@ export const postMetadata = {
 // Dados completos do post
 const POST_DATA: BlogPost = {
   ...postMetadata,
-  content: `A Colômbia tem uma longa tradição no cultivo de café com sabores regionais distintos e métodos de processamento característicos.
+  content: `O café colombiano é reconhecido mundialmente por sua qualidade e variedades distintivas. Cada tipo contribui para a reputação da Colômbia como produtora de café premium. Aqui estão algumas variedades-chave do café colombiano:
 
-As três principais regiões cafeeiras - Huila, Antioquia e Nariño - produzem grãos com características únicas. O solo vulcânico de Huila cria cafés com acidez brilhante e notas frutadas, enquanto as fazendas de alta altitude de Antioquia produzem sabores equilibrados com toques de chocolate.
+Typica:
+• Variedade tradicional com excelente qualidade de xícara
+• Acidez brilhante e perfil de sabor complexo
+• Notas cítricas e tons florais
+• Cultivado em altas altitudes por toda a Colômbia
 
-O café colombiano é predominantemente lavado (processamento úmido), o que realça seu perfil limpo e brilhante. O rigoroso controle de qualidade e sistema de classificação do país garantem que apenas os melhores grãos recebem a designação "100% Café Colombiano".
+Caturra:
+• Mutação natural da variedade Bourbon
+• Bem equilibrado com corpo médio
+• Aroma doce com notas de caramelo
+• Popular em pequenas propriedades
 
-Principais variedades incluem:
-• Castillo: Resistente a doenças com notas cítricas e adocicadas
-• Caturra: Acidez brilhante e corpo médio
-• Typica: A variedade original com aromas florais delicados
+Castillo:
+• Variedade resistente a doenças desenvolvida pelo Cenicafé
+• Boa qualidade de xícara com perfil equilibrado
+• Adaptável a várias condições de cultivo
+• Cada vez mais popular entre os cafeicultores colombianos
 
-Em resumo, o café colombiano continua sendo referência em qualidade e diversidade, oferecendo opções para todos os paladares dos amantes de café.`,
+Essas variedades demonstram o compromisso da Colômbia com a produção de café de qualidade enquanto se adapta aos desafios modernos do cultivo de café.`,
 };
 
 export default function VariedadesCafeColombiano() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      <BackButton />
+      <BackButton href="/pt/blog" />
 
       {/* Seção Hero */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center">
@@ -87,6 +97,7 @@ export default function VariedadesCafeColombiano() {
               <time>
                 {formatDistanceToNow(new Date(POST_DATA.publishedAt), {
                   addSuffix: true,
+                  locale: ptBR,
                 })}
               </time>
             </div>

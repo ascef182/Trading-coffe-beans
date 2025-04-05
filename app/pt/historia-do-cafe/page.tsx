@@ -17,19 +17,19 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
       "Francisco de Melo Palheta trouxe as primeiras sementes de café para o Brasil da Guiana Francesa.",
   },
   {
-    year: "Século XIX",
+    year: "Sec XIX",
     title: "Expansão Cafeeira",
     description:
       "O Brasil se torna o maior produtor mundial de café, que se torna a principal exportação do país.",
   },
   {
-    year: "Década de 1920",
+    year: "1920",
     title: "Capital do Café",
     description:
       "São Paulo se consolida como a capital mundial do café, impulsionando a economia brasileira.",
   },
   {
-    year: "Atualidade",
+    year: "Hoje",
     title: "Líder Global",
     description:
       "O Brasil mantém sua posição como maior produtor e exportador mundial de café.",

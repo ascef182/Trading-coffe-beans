@@ -48,7 +48,7 @@ export default function BlogPage() {
             </div>
           </Link>
 
-          <Link href="/pt/blog/Insights-sobre-Cafe-Verde" className="group">
+          <Link href="/pt/blog/insights-cafe-verde" className="group">
             <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 group-hover:scale-105">
               <div className="relative h-48">
                 <Image

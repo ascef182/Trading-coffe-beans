@@ -1,18 +1,15 @@
-import { BackButton } from "@/components/back-button";
-import Image from "next/image";
+import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { formatDistanceToNow } from "date-fns";
+import { Calendar, User } from "lucide-react";
 
-// Importe os metadados com o nome correto
-import { postMetadata as brazilianPost } from "./posts/brazilian-coffee-varieties/page";
-import { postMetadata as colombianPost } from "./posts/colombian-coffee-varieties/page";
-import { postMetadata as greenCoffeePost } from "./posts/green-coffee-insights/page";
-
-// Defina o tipo para os metadados
-interface BlogPostMetadata {
+interface BlogPost {
   slug: string;
   title: string;
-  excerpt: string;
+  subtitle: string;
   featuredImage: string;
+  excerpt: string;
   publishedAt: string;
   author: {
     name: string;
@@ -20,80 +17,102 @@ interface BlogPostMetadata {
   };
 }
 
-const allPosts: BlogPostMetadata[] = [
-  brazilianPost,
-  colombianPost,
-  greenCoffeePost,
+const blogPosts: BlogPost[] = [
+  {
+    slug: "brazilian-coffee-varieties",
+    title: "Brazilian Coffee Varieties",
+    subtitle: "A Guide to Brazil's Most Popular Coffee Types",
+    featuredImage: "/photos/coffe.jpg",
+    excerpt:
+      "Explore the rich diversity of Brazilian coffee varieties, from the sweet notes of Yellow Bourbon to the full-bodied Mundo Novo.",
+    publishedAt: "2023-09-10T09:00:00Z",
+    author: {
+      name: "João Silva",
+      role: "Coffee Expert",
+    },
+  },
+  {
+    slug: "colombian-coffee-varieties",
+    title: "Colombian Coffee Varieties",
+    subtitle: "Exploring Colombia's Premium Coffee Types",
+    featuredImage: "/photos/colombia-13-1-optimized.jpg",
+    excerpt:
+      "Discover the unique characteristics of Colombian coffee varieties, from the traditional Typica to the innovative Castillo.",
+    publishedAt: "2023-09-12T10:00:00Z",
+    author: {
+      name: "Ana Martinez",
+      role: "Coffee Specialist",
+    },
+  },
+  {
+    slug: "green-coffee-insights",
+    title: "Green Coffee Insights",
+    subtitle: "Understanding Raw Coffee and Its Market Impact",
+    featuredImage: "/photos/Café-Verde.webp",
+    excerpt:
+      "Learn about green coffee, its characteristics, and its crucial role in the global coffee market.",
+    publishedAt: "2023-09-15T10:30:00Z",
+    author: {
+      name: "Maria Oliveira",
+      role: "Green Coffee Expert",
+    },
+  },
 ];
 
 export default function BlogPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
-      <BackButton />
-
-      {/* Hero Section */}
-      <section className="relative h-[200px] flex items-center justify-center">
-        <Image
-          src="/photos/trading.jpg"
-          alt="Coffee plantation"
-          fill
-          className="object-cover brightness-50"
-          priority
-        />
-        <div className="container relative z-10 text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Coffee Insights
-          </h1>
-          <p className="text-xl md:text-2xl max-w-2xl mx-auto">
-            Latest news, trends, and stories from the world of coffee
-          </p>
-        </div>
-      </section>
-
-      {/* Blog Posts Grid */}
-      <section className="py-16">
-        <div className="container max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allPosts.map((post) => (
-              <article
-                key={post.slug}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-              >
-                <Link href={`/blog/posts/${post.slug}`} className="block">
-                  <div className="relative h-48 w-full">
-                    <Image
-                      src={post.featuredImage}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                  </div>
-
-                  <div className="p-6">
-                    <h2 className="text-xl font-bold text-gray-800 mb-2">
-                      {post.title}
-                    </h2>
-
-                    <p className="text-gray-600 mb-4 line-clamp-2">
-                      {post.excerpt}
-                    </p>
-
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-500">
-                        {new Date(post.publishedAt).toLocaleDateString()}
-                      </span>
-                      <span className="text-emerald-600 font-medium hover:underline">
-                        Read more →
+    <div className="min-h-screen bg-background py-12 md:py-16">
+      <div className="container">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">
+          Coffee Blog
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogPosts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/posts/${post.slug}`}
+              className="group"
+            >
+              <article className="bg-card rounded-lg overflow-hidden shadow-lg transition-transform duration-200 group-hover:-translate-y-1">
+                <div className="relative h-48">
+                  <Image
+                    src={post.featuredImage}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h2 className="text-xl font-semibold mb-2 text-foreground">
+                    {post.title}
+                  </h2>
+                  <p className="text-muted-foreground mb-4">{post.subtitle}</p>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <User className="h-4 w-4" />
+                      <span>{post.author.name}</span>
+                      <span className="text-muted-foreground/70">
+                        ({post.author.role})
                       </span>
                     </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      <time>
+                        {formatDistanceToNow(new Date(post.publishedAt), {
+                          addSuffix: true,
+                        })}
+                      </time>
+                    </div>
                   </div>
-                </Link>
+                </div>
               </article>
-            ))}
-          </div>
+            </Link>
+          ))}
         </div>
-      </section>
+      </div>
     </div>
   );
 }

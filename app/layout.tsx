@@ -1,10 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
-import { LanguageProvider } from "@/contexts/language-context";
+import { Providers } from "@/components/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,20 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <LanguageProvider>
+    <html lang="en" suppressHydrationWarning className="h-full">
+      <body className={`${inter.className} flex min-h-full flex-col`}>
+        <Providers>
+          <div className="flex min-h-screen flex-col">
             <Navigation />
-            <main className="min-h-screen">{children}</main>
+            <main className="flex-1">{children}</main>
             <Footer />
-          </LanguageProvider>
-        </ThemeProvider>
+          </div>
+        </Providers>
       </body>
     </html>
   );

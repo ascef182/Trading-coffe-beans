@@ -20,39 +20,48 @@ interface BlogPost {
   };
 }
 
-// Metadados exportados para uso na listagem de posts
-export const postMetadata = {
+// Metadados para uso interno (não exportados)
+const postMetadata = {
   slug: "colombian-coffee-varieties",
   title: "Colombian Coffee Varieties",
-  subtitle: "Exploring the rich diversity of Colombian coffee",
+  subtitle: "Exploring Colombia's Premium Coffee Types",
   featuredImage: "/photos/colombia-13-1-optimized.jpg",
   excerpt:
-    "Colombian coffee is renowned for its diverse flavors and distinct regional profiles. Explore the unique varieties that make Colombian coffee world famous.",
-  publishedAt: "2023-10-01T12:00:00Z",
+    "Discover the unique characteristics of Colombian coffee varieties, from the traditional Typica to the innovative Castillo.",
+  publishedAt: "2023-09-12T10:00:00Z",
   author: {
-    name: "Jane Smith",
-    role: "Coffee Expert",
+    name: "Ana Martinez",
+    role: "Coffee Specialist",
   },
 };
 
 // Dados completos do post
 const POST_DATA: BlogPost = {
   ...postMetadata,
-  content: `Colombia has a long-standing tradition of coffee cultivation with distinct regional flavors and processing methods.
+  content: `Colombian coffee is renowned worldwide for its quality and distinctive varieties. Each type contributes to Colombia's reputation as a producer of premium coffee. Here are some key Colombian coffee varieties:
 
-The three main coffee-growing regions - Huila, Antioquia, and Nariño - each produce beans with unique characteristics. Huila's volcanic soil creates coffees with bright acidity and fruity notes, while Antioquia's high-altitude farms produce balanced, chocolatey flavors.
+Typica:
+• Traditional variety with excellent cup quality
+• Bright acidity and complex flavor profile
+• Notes of citrus and floral undertones
+• Grown at high altitudes throughout Colombia
 
-Colombian coffee is predominantly washed (wet-processed), which enhances its clean, bright profile. The country's strict quality control and grading system ensure only the best beans earn the "100% Colombian Coffee" designation.
+Caturra:
+• Natural mutation of Bourbon variety
+• Well-balanced with medium body
+• Sweet aroma with caramel notes
+• Popular in small-scale farming
 
-Key varieties include:
-• Castillo: Disease-resistant with sweet, citrus notes
-• Caturra: Bright acidity and medium body
-• Typica: The original variety with delicate floral aromas
+Castillo:
+• Disease-resistant variety developed by Cenicafé
+• Good cup quality with balanced profile
+• Adaptable to various growing conditions
+• Increasingly popular among Colombian farmers
 
-In summary, Colombian coffee continues to be a benchmark for quality and diversity, offering something for every coffee lover's palate.`,
+These varieties showcase Colombia's commitment to quality coffee production while adapting to modern challenges in coffee farming.`,
 };
 
-export default function ColombianCoffeeVarieties() {
+export default function ColombianCoffeeVarietiesPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <BackButton />

@@ -6,6 +6,7 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     container: {
@@ -107,6 +108,15 @@ const config: Config = {
               "&:hover": {
                 color: "hsl(var(--primary))",
               },
+            },
+            ul: {
+              listStyleType: "disc",
+              paddingLeft: "1.5rem",
+            },
+            li: {
+              color: "hsl(var(--muted-foreground))",
+              marginTop: "0.5rem",
+              marginBottom: "0.5rem",
             },
           },
         },

@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import { Calendar, User } from "lucide-react";
 import { BackButton } from "@/components/back-button";
 
@@ -19,35 +20,50 @@ interface BlogPost {
   };
 }
 
-export const postMetadata = {
+// Metadados para uso interno (não exportados)
+const postMetadata = {
   slug: "variedades-cafe-brasileiro",
   title: "Variedades de Café Brasileiro",
-  subtitle: "Descubra os processos e sabores distintos do café brasileiro",
-  featuredImage: "/photos/unnamed.jpg",
+  subtitle: "Guia das Principais Variedades de Café do Brasil",
+  featuredImage: "/photos/varieties.jpg",
   excerpt:
-    "O Brasil é o maior produtor de café do mundo, oferecendo diversos métodos de processamento que resultam em perfis de sabor únicos.",
-  publishedAt: "2023-11-10T12:00:00Z",
+    "Explore a rica diversidade das variedades de café brasileiro, desde as notas doces do Bourbon Amarelo até o encorpado Mundo Novo.",
+  publishedAt: "2023-09-10T09:00:00Z",
   author: {
-    name: "Carlos Silva",
-    role: "Especialista do Setor",
+    name: "João Silva",
+    role: "Especialista em Café",
   },
 };
 
 const POST_DATA: BlogPost = {
   ...postMetadata,
-  content: `Os métodos de processamento do café brasileiro são variados e contribuem para um sabor rico e complexo.
+  content: `O Brasil é o lar de algumas das variedades de café mais distintivas do mundo. Cada tipo traz suas próprias características e sabores únicos para sua xícara. Vamos explorar algumas das variedades brasileiras mais notáveis:
 
-O processo natural, onde os frutos secam ao sol com a polpa ainda intacta, produz um café de corpo encorpado com notas frutadas e adocicadas. Este método tradicional representa cerca de 70% da produção brasileira.
+Bourbon Amarelo:
+• Conhecido por seu sabor doce e complexo
+• Corpo suave com baixa acidez
+• Notas de caramelo e chocolate
+• Cultivado principalmente em Minas Gerais e São Paulo
 
-O processo despolpado natural remove a casca mas mantém parte da mucilagem, criando um equilíbrio entre acidez suave e doçura. Os cafés lavados, embora menos comuns no Brasil, oferecem acidez mais vibrante e sabores mais limpos.
+Mundo Novo:
+• Um híbrido natural de Typica e Bourbon
+• Encorpado com acidez média
+• Excelente para blends de espresso
+• Alta produtividade e resistência a doenças
 
-Esses processos únicos criam os sabores característicos que tornaram o café brasileiro famoso - notas de chocolate, nozes, geralmente com baixa acidez e corpo encorpado.`,
+Catuaí:
+• Desenvolvido a partir do Caturra Amarelo e Mundo Novo
+• Xícara equilibrada com boa doçura
+• Adaptável a diferentes condições de cultivo
+• Popular na cafeicultura brasileira moderna
+
+Essas variedades representam apenas uma pequena amostra da rica herança cafeeira do Brasil. Cada uma contribui para fazer do Brasil o maior produtor mundial de café e líder em qualidade.`,
 };
 
-export default function BrazilianCoffeeVarieties() {
+export default function VariedadesCafeBrasileiroPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      <BackButton />
+      <BackButton href="/pt/blog" />
 
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center">
         <div className="absolute inset-0">
@@ -78,6 +94,7 @@ export default function BrazilianCoffeeVarieties() {
               <time>
                 {formatDistanceToNow(new Date(POST_DATA.publishedAt), {
                   addSuffix: true,
+                  locale: ptBR,
                 })}
               </time>
             </div>

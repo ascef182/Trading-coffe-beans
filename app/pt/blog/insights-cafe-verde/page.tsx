@@ -1,7 +1,7 @@
-// app/blog/posts/green-coffee-insights/page.tsx
 import React from "react";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import { Calendar, User } from "lucide-react";
 import { BackButton } from "@/components/back-button";
 
@@ -20,44 +20,49 @@ interface BlogPost {
   };
 }
 
-// Dados do post
-const POST_DATA: BlogPost = {
-  slug: "green-coffee-insights",
-  title: "Green Coffee Insights",
-  subtitle: "Understanding Raw Coffee and Its Market Impact",
-  featuredImage: "/photos/Café-Verde.webp",
+// Metadados para uso interno (não exportados)
+const postMetadata = {
+  slug: "insights-cafe-verde",
+  title: "Insights sobre Café Verde",
+  subtitle: "Entendendo o café verde e seu papel no mercado global",
+  featuredImage: "/photos/pe_de_cafe_verde.jpg",
   excerpt:
-    "Learn about green coffee, its characteristics, and its crucial role in the global coffee market.",
-  content: `Green coffee, also known as raw coffee, is the coffee bean in its natural state before roasting. These beans maintain their original properties and have a milder, herbaceous flavor.
-
-Characteristics of Green Coffee:
-• Olive-green color
-• Mild and herbaceous flavor
-• High chlorogenic acid content
-• Lower caffeine content compared to roasted coffee
-• Better storage durability
-
-Health Benefits:
-Green coffee is rich in antioxidants, especially chlorogenic acid, which may help reduce blood pressure and improve cardiovascular health. Studies suggest that regular consumption of green coffee may contribute to weight management and blood sugar regulation.
-
-Market Uses:
-Beyond direct consumption, green coffee is used in the production of dietary supplements and functional beverage extracts. The cosmetics industry also uses green coffee extracts in skincare products.
-
-Global Market:
-The green coffee market has grown significantly in recent years, driven by demand for natural and functional products. Cazarini Trading specializes in exporting high-quality green coffee to various international markets.`,
+    "O café verde, ou café cru, é o grão de café antes da torrefação. Conheça suas características, benefícios e usos no mercado global.",
   publishedAt: "2023-09-15T10:30:00Z",
   author: {
     name: "Maria Oliveira",
-    role: "Green Coffee Expert",
+    role: "Especialista em Café Verde",
   },
 };
 
-export default function GreenCoffeeInsightsPage() {
+// Dados completos do post
+const POST_DATA: BlogPost = {
+  ...postMetadata,
+  content: `O café verde, também conhecido como café cru, é o grão de café em seu estado natural, antes de passar pelo processo de torrefação. Estes grãos mantêm suas propriedades originais e têm um sabor mais suave e herbáceo.
+
+Características do Café Verde:
+• Cor verde-oliva
+• Sabor suave e herbáceo
+• Alto teor de ácido clorogênico
+• Baixo teor de cafeína em comparação com café torrado
+• Maior durabilidade de armazenamento
+
+Benefícios para a Saúde:
+O café verde é rico em antioxidantes, especialmente ácido clorogênico, que pode ajudar a reduzir a pressão arterial e melhorar a saúde cardiovascular. Estudos sugerem que o consumo regular de café verde pode contribuir para o controle do peso e a regulação do açúcar no sangue.
+
+Usos no Mercado:
+Além do consumo direto, o café verde é utilizado na produção de suplementos alimentares e extratos para bebidas funcionais. A indústria de cosméticos também utiliza extratos de café verde em produtos para cuidados com a pele.
+
+Mercado Global:
+O mercado de café verde tem crescido significativamente nos últimos anos, impulsionado pela demanda por produtos naturais e funcionais. A Cazarini Trading é especializada na exportação de café verde de alta qualidade para diversos mercados internacionais.`,
+};
+
+export default function InsightsCafeVerdePage() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      <BackButton />
+      <BackButton href="/pt/blog" />
 
-      {/* Hero Section */}
+      {/* Seção Hero */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
@@ -87,6 +92,7 @@ export default function GreenCoffeeInsightsPage() {
               <time>
                 {formatDistanceToNow(new Date(POST_DATA.publishedAt), {
                   addSuffix: true,
+                  locale: ptBR,
                 })}
               </time>
             </div>
@@ -94,7 +100,7 @@ export default function GreenCoffeeInsightsPage() {
         </div>
       </section>
 
-      {/* Content Section */}
+      {/* Seção de Conteúdo */}
       <section className="py-12 md:py-16 bg-white">
         <div className="container max-w-4xl mx-auto px-4">
           <article className="prose prose-lg max-w-none">
@@ -113,4 +119,4 @@ export default function GreenCoffeeInsightsPage() {
       </section>
     </div>
   );
-}
+} 

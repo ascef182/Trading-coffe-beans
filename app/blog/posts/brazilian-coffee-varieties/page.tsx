@@ -20,35 +20,48 @@ interface BlogPost {
   };
 }
 
-// Metadados exportados para uso na listagem de posts
-export const postMetadata = {
+// Metadados para uso interno (não exportados)
+const postMetadata = {
   slug: "brazilian-coffee-varieties",
   title: "Brazilian Coffee Varieties",
-  subtitle:
-    "Discover the distinctive processes and flavors of Brazilian coffee",
-  featuredImage: "/photos/unnamed.jpg",
+  subtitle: "A Guide to Brazil's Most Popular Coffee Types",
+  featuredImage: "/photos/coffe.jpg",
   excerpt:
-    "Brazil is the world's largest coffee producer, offering a wide range of processing methods that result in diverse flavor profiles.",
-  publishedAt: "2023-11-10T12:00:00Z",
+    "Explore the rich diversity of Brazilian coffee varieties, from the sweet notes of Yellow Bourbon to the full-bodied Mundo Novo.",
+  publishedAt: "2023-09-10T09:00:00Z",
   author: {
-    name: "Carlos Silva",
-    role: "Industry Specialist",
+    name: "João Silva",
+    role: "Coffee Expert",
   },
 };
 
 // Dados completos do post
 const POST_DATA: BlogPost = {
   ...postMetadata,
-  content: `Brazilian coffee processing methods are varied and contribute to a rich and complex taste.
+  content: `Brazil is home to some of the world's most distinctive coffee varieties. Each type brings its own unique characteristics and flavors to your cup. Let's explore some of the most notable Brazilian coffee varieties:
 
-The natural process, where coffee cherries dry in the sun with the fruit still attached, produces a heavy-bodied coffee with fruity and sweet notes. This traditional method accounts for about 70% of Brazil's production.
+Yellow Bourbon:
+• Known for its sweet, complex flavor
+• Smooth body with low acidity
+• Notes of caramel and chocolate
+• Grown primarily in Minas Gerais and São Paulo
 
-The pulped natural process removes the skin but leaves some mucilage, creating a balance between clean acidity and sweetness. Washed coffees, though less common in Brazil, offer brighter acidity and cleaner flavors.
+Mundo Novo:
+• A natural hybrid of Typica and Bourbon
+• Full-bodied with medium acidity
+• Excellent for espresso blends
+• High yield and disease resistance
 
-Ultimately, these unique processes create the signature flavors that Brazilian coffee is renowned for - chocolatey, nutty, and often with low acidity and a heavy body.`,
+Catuai:
+• Developed from Yellow Caturra and Mundo Novo
+• Balanced cup with good sweetness
+• Adaptable to different growing conditions
+• Popular in modern Brazilian coffee farming
+
+These varieties represent just a small sample of Brazil's rich coffee heritage. Each one contributes to making Brazil the world's largest coffee producer and a leader in coffee quality.`,
 };
 
-export default function BrazilianCoffeeVarieties() {
+export default function BrazilianCoffeeVarietiesPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <BackButton />
