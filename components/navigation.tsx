@@ -92,12 +92,12 @@ export function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
+      <div className="mx-auto w-full max-w-7xl px-2 md:px-4 flex h-16 items-center">
         <Link
           href={language === "en" ? "/" : "/pt"}
           className="flex items-center h-full"
         >
-          <div className="h-16 w-auto">
+          <div className="h-16 w-auto ml-1 md:ml-0">
             <Image
               src="/Logomarca-Cazarini-12.09.13.svg"
               alt="Cazarini Trading"
@@ -105,6 +105,8 @@ export function Navigation() {
               height={64}
               className="w-[200px] h-[64px] object-contain"
               priority
+              loading="eager"
+              fetchPriority="high"
             />
           </div>
         </Link>

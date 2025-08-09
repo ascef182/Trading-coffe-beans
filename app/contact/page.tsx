@@ -14,48 +14,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { BackButton } from "@/components/back-button";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
+import { useForm as useFormspree, ValidationError } from "@formspree/react";
 
-const schema = z.object({
-  firstName: z.string().min(2),
-  lastName: z.string().min(2),
-  email: z.string().email(),
-  company: z.string().min(2),
-  message: z.string().min(10),
-});
-type ContactFormData = z.infer<typeof schema>;
+// Using Formspree built-in validation
 
 export default function ContactPage() {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { isSubmitting },
-  } = useForm<ContactFormData>({ resolver: zodResolver(schema) });
-
-  const onSubmit = async (data: ContactFormData) => {
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to send message");
-      }
-
-      toast.success("Message sent successfully! We will get back to you soon.");
-      reset();
-    } catch (error) {
-      toast.error("Failed to send message. Please try again later.");
-    }
-  };
+  const [state, handleSubmit] = useFormspree("mblkqgvo");
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -67,8 +31,8 @@ export default function ContactPage() {
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold mb-4">Get in Touch</h1>
               <p className="text-xl text-muted-foreground">
-                We'd love to hear from you. Let's discuss how we can work
-                together.
+                We&apos;d love to hear from you. Let&apos;s discuss how we can
+                work together.
               </p>
             </div>
 
@@ -131,68 +95,99 @@ export default function ContactPage() {
                 <CardHeader>
                   <CardTitle>Send us a Message</CardTitle>
                   <CardDescription>
-                    Fill out the form below and we'll get back to you as soon as
-                    possible.
+                    Fill out the form below and we&apos;ll get back to you as
+                    soon as possible.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {state.succeeded ? (
+                    <p className="text-green-600">
+                      Thanks! We&apos;ll get back to you soon.
+                    </p>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      {/* Honeypot field */}
+                      <input
+                        type="text"
+                        name="_gotcha"
+                        aria-hidden="true"
+                        placeholder="Do not fill"
+                        className="hidden"
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName">First Name</Label>
+                          <Input
+                            id="firstName"
+                            name="firstName"
+                            placeholder="John"
+                            required
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName">Last Name</Label>
+                          <Input
+                            id="lastName"
+                            name="lastName"
+                            placeholder="Doe"
+                            required
+                          />
+                        </div>
+                      </div>
+
                       <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name</Label>
+                        <Label htmlFor="email">Email</Label>
                         <Input
-                          id="firstName"
-                          placeholder="John"
-                          {...register("firstName", { required: true })}
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="john@example.com"
+                          required
+                        />
+                        <ValidationError
+                          prefix="Email"
+                          field="email"
+                          errors={state.errors}
                         />
                       </div>
+
                       <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name</Label>
+                        <Label htmlFor="company">Company</Label>
                         <Input
-                          id="lastName"
-                          placeholder="Doe"
-                          {...register("lastName", { required: true })}
+                          id="company"
+                          name="company"
+                          placeholder="Your company name"
+                          required
                         />
                       </div>
-                    </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="john@example.com"
-                        {...register("email", { required: true })}
-                      />
-                    </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="message">Message</Label>
+                        <Textarea
+                          id="message"
+                          name="message"
+                          placeholder="Tell us about your needs..."
+                          className="min-h-[150px]"
+                          required
+                        />
+                        <ValidationError
+                          prefix="Message"
+                          field="message"
+                          errors={state.errors}
+                        />
+                      </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Company</Label>
-                      <Input
-                        id="company"
-                        placeholder="Your company name"
-                        {...register("company", { required: true })}
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea
-                        id="message"
-                        placeholder="Tell us about your needs..."
-                        className="min-h-[150px]"
-                        {...register("message", { required: true })}
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      className="w-full"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Sending..." : "Send Message"}
-                    </Button>
-                  </form>
+                      <Button
+                        type="submit"
+                        className="w-full"
+                        disabled={state.submitting}
+                      >
+                        {state.submitting ? "Sending..." : "Send Message"}
+                      </Button>
+                    </form>
+                  )}
                 </CardContent>
               </Card>
             </div>

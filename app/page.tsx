@@ -99,7 +99,7 @@ export default function Home() {
               asChild
               size="lg"
               variant="outline"
-              className="min-w-[200px] bg-transparent hover:bg-white/10 text-white border-white hover:border-[#b3a957] transition-all"
+              className="min-w-[200px] bg-transparent hover:bg-white/50 text-white border-white hover:border-[#b3a957] transition-all"
             >
               <Link href="/varieties">
                 Explore Varieties <Coffee className="ml-2 h-4 w-4" />
@@ -242,7 +242,7 @@ export default function Home() {
             </div>
             <div className="relative h-[500px]">
               <Image
-                src="photos/coffe.jpg"
+                src="/photos/coffe.jpg"
                 alt="Green coffee selection"
                 fill
                 className="object-cover rounded-lg"
@@ -262,49 +262,52 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
+            {[
+              {
+                slug: "/blog/posts/green-coffee-insights",
+                title: "Global Green Coffee Market Insights",
+                image: "/photos/AdobeStock_179552693.jpeg",
+                tag: "Market Analysis",
+                excerpt:
+                  "Latest trends and forecasts in the green coffee market...",
+              },
+              {
+                slug: "/blog/posts/brazilian-coffee-varieties",
+                title: "Brazilian Coffee Varieties",
+                image: "/photos/unnamed.jpg",
+                tag: "Varieties",
+                excerpt:
+                  "Discover the distinctive processes and flavors of Brazilian coffee...",
+              },
+              {
+                slug: "/blog/posts/colombian-coffee-varieties",
+                title: "Colombian Coffee Varieties",
+                image: "/photos/colombia-13-1-optimized.jpg",
+                tag: "Varieties",
+                excerpt:
+                  "Explore the diversity of Colombian coffee profiles...",
+              },
+            ].map((post) => (
               <div
-                key={i}
+                key={post.slug}
                 className="rounded-lg overflow-hidden border bg-card"
               >
                 <div className="relative h-48">
                   <Image
-                    src={
-                      i === 1
-                        ? "https://as2.ftcdn.net/v2/jpg/04/65/06/85/1000_F_465068570_ZpGdLiqjzOG4JILcNhRbVzipzPp4W4BX.jpg"
-                        : i === 2
-                        ? "https://t3.ftcdn.net/jpg/06/23/17/06/240_F_623170639_lgGNuAwLWyzv4ddB9lIzZSoYFeLh5mqg.jpg"
-                        : "https://as1.ftcdn.net/v2/jpg/02/70/41/64/1000_F_270416431_O4mZ3lQPJZPKJuMAH6lZehdUTulnbH6p.jpg"
-                    }
-                    alt="Blog post"
+                    src={post.image}
+                    alt={post.title}
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <div className="text-sm text-muted-foreground mb-2">
-                    {i === 1
-                      ? "Market Analysis"
-                      : i === 2
-                      ? "Quality Control"
-                      : "Sourcing"}
+                    {post.tag}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    {i === 1
-                      ? "Brazilian Green Coffee Market Report"
-                      : i === 2
-                      ? "Understanding Coffee Grading Standards"
-                      : "Direct Trade Relationships"}
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {i === 1
-                      ? "Latest trends and forecasts in the green coffee market..."
-                      : i === 2
-                      ? "A comprehensive guide to coffee quality standards..."
-                      : "Building sustainable partnerships with producers..."}
-                  </p>
+                  <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
+                  <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                   <Button variant="link" asChild className="p-0">
-                    <Link href="/blog">Read More</Link>
+                    <Link href={post.slug}>Read More</Link>
                   </Button>
                 </div>
               </div>
@@ -342,7 +345,7 @@ export default function Home() {
               asChild
               size="lg"
               variant="outline"
-              className="w-full sm:w-[200px] bg-transparent text-white border-2 border-white hover:bg-white/10 hover:border-white/80 font-medium transition-all hover:scale-105"
+              className="w-full sm:w-[200px] bg-transparent text-white border-2 border-white hover:bg-white/50 hover:border-white/80 font-medium transition-all hover:scale-105"
             >
               <Link
                 href="/contact"

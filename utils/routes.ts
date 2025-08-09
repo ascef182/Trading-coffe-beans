@@ -41,7 +41,7 @@ export function getTranslatedRoute(path: string, language: Language): string {
     if (normalized.startsWith("/blog/posts/")) {
       const slug = normalized.replace("/blog/posts/", "");
       const ptSlug = (blogPostSlugMap.enToPt as Record<string, string>)[slug];
-      return ptSlug ? `/pt/blog/${ptSlug}` : "/pt/blog`";
+      return ptSlug ? `/pt/blog/${ptSlug}` : "/pt/blog";
     }
     // Fallback: prefixa /pt para qualquer rota desconhecida
     return normalized === "/" ? "/pt" : `/pt${normalized}`;
@@ -50,14 +50,23 @@ export function getTranslatedRoute(path: string, language: Language): string {
   // language === 'en'
   if (normalized === "/pt") return "/";
   if (normalized.startsWith("/pt/")) {
+    // Mapeamento explícito PT -> EN para páginas conhecidas
+    for (const [, translations] of Object.entries(routeMapping)) {
+      if (translations.pt === normalized) {
+        return translations.en;
+      }
+    }
     // Blog posts PT -> EN
     if (normalized.startsWith("/pt/blog/")) {
       const slug = normalized.replace("/pt/blog/", "");
       const enSlug = (blogPostSlugMap.ptToEn as Record<string, string>)[slug];
       return enSlug ? `/blog/posts/${enSlug}` : "/blog";
     }
-    // Remove o prefixo /pt para qualquer outra rota
-    return normalized.slice(3) || "/";
+    // Fallback: tenta remover /pt e validar; caso contrário, vai para a raiz
+    const candidate = normalized.slice(3) || "/";
+    if (routeMapping[candidate]) return routeMapping[candidate].en;
+    if (candidate.startsWith("/blog/posts/")) return candidate;
+    return "/";
   }
   if (routeMapping[normalized]) return routeMapping[normalized].en;
   return normalized;

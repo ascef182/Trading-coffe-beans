@@ -60,6 +60,11 @@ export function Carousel({
               src={image.src}
               alt={image.alt}
               className="w-full h-full object-cover"
+              loading={index === currentIndex ? "eager" : "lazy"}
+              fetchPriority={
+                index === currentIndex ? ("high" as any) : ("auto" as any)
+              }
+              decoding="async"
             />
           </div>
         ))}

@@ -14,50 +14,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { BackButton } from "@/components/back-button";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
+import { useForm as useFormspree, ValidationError } from "@formspree/react";
 
-const schema = z.object({
-  firstName: z.string().min(2),
-  lastName: z.string().min(2),
-  email: z.string().email(),
-  company: z.string().min(2),
-  message: z.string().min(10),
-});
-type ContactFormData = z.infer<typeof schema>;
+// Validação básica controlada pelo Formspree
 
 export default function PaginaContato() {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { isSubmitting },
-  } = useForm<ContactFormData>({ resolver: zodResolver(schema) });
-
-  const onSubmit = async (data: ContactFormData) => {
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error("Falha ao enviar mensagem");
-      }
-
-      toast.success("Mensagem enviada com sucesso! Retornaremos em breve.");
-      reset();
-    } catch (error) {
-      toast.error(
-        "Falha ao enviar mensagem. Por favor, tente novamente mais tarde."
-      );
-    }
-  };
+  const [state, handleSubmit] = useFormspree("mblkqgvo");
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -138,63 +100,94 @@ export default function PaginaContato() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {state.succeeded ? (
+                    <p className="text-green-600">
+                      Obrigado! Em breve entraremos em contato.
+                    </p>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      {/* Honeypot */}
+                      <input
+                        type="text"
+                        name="_gotcha"
+                        aria-hidden="true"
+                        placeholder="Não preencher"
+                        className="hidden"
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName">Nome</Label>
+                          <Input
+                            id="firstName"
+                            name="firstName"
+                            placeholder="João"
+                            required
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName">Sobrenome</Label>
+                          <Input
+                            id="lastName"
+                            name="lastName"
+                            placeholder="Silva"
+                            required
+                          />
+                        </div>
+                      </div>
+
                       <div className="space-y-2">
-                        <Label htmlFor="firstName">Nome</Label>
+                        <Label htmlFor="email">E-mail</Label>
                         <Input
-                          id="firstName"
-                          placeholder="João"
-                          {...register("firstName", { required: true })}
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="joao@exemplo.com"
+                          required
+                        />
+                        <ValidationError
+                          prefix="Email"
+                          field="email"
+                          errors={state.errors}
                         />
                       </div>
+
                       <div className="space-y-2">
-                        <Label htmlFor="lastName">Sobrenome</Label>
+                        <Label htmlFor="company">Empresa</Label>
                         <Input
-                          id="lastName"
-                          placeholder="Silva"
-                          {...register("lastName", { required: true })}
+                          id="company"
+                          name="company"
+                          placeholder="Nome da sua empresa"
+                          required
                         />
                       </div>
-                    </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="email">E-mail</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="joao@exemplo.com"
-                        {...register("email", { required: true })}
-                      />
-                    </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="message">Mensagem</Label>
+                        <Textarea
+                          id="message"
+                          name="message"
+                          placeholder="Conte-nos sobre suas necessidades..."
+                          className="min-h-[150px]"
+                          required
+                        />
+                        <ValidationError
+                          prefix="Mensagem"
+                          field="message"
+                          errors={state.errors}
+                        />
+                      </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Empresa</Label>
-                      <Input
-                        id="company"
-                        placeholder="Nome da sua empresa"
-                        {...register("company", { required: true })}
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Mensagem</Label>
-                      <Textarea
-                        id="message"
-                        placeholder="Conte-nos sobre suas necessidades..."
-                        className="min-h-[150px]"
-                        {...register("message", { required: true })}
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      className="w-full"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
-                    </Button>
-                  </form>
+                      <Button
+                        type="submit"
+                        className="w-full"
+                        disabled={state.submitting}
+                      >
+                        {state.submitting ? "Enviando..." : "Enviar Mensagem"}
+                      </Button>
+                    </form>
+                  )}
                 </CardContent>
               </Card>
             </div>

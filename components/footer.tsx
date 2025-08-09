@@ -86,25 +86,18 @@ export function Footer() {
             </h4>
             <nav className="space-y-3">
               <Link
-                href="/privacy"
+                href={isPT ? "/pt/privacidade" : "/privacy"}
                 className="flex items-center gap-2 text-muted-foreground hover:text-foreground hover:underline"
               >
                 <Shield className="h-4 w-4" />
                 {isPT ? "Política de Privacidade" : "Privacy Policy"}
               </Link>
               <Link
-                href="/terms"
+                href={isPT ? "/pt/termos" : "/terms"}
                 className="flex items-center gap-2 text-muted-foreground hover:text-foreground hover:underline"
               >
                 <FileText className="h-4 w-4" />
                 {isPT ? "Termos de Uso" : "Terms of Use"}
-              </Link>
-              <Link
-                href="/faq"
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground hover:underline"
-              >
-                <HelpCircle className="h-4 w-4" />
-                {isPT ? "Perguntas Frequentes" : "FAQ"}
               </Link>
             </nav>
           </div>

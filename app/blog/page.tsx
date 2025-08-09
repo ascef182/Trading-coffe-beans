@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
 import { Calendar, User } from "lucide-react";
+import { BackButton } from "@/components/back-button";
 
 interface BlogPost {
   slug: string;
@@ -62,6 +63,7 @@ const blogPosts: BlogPost[] = [
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-background py-12 md:py-16">
+      <BackButton />
       <div className="container">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">
           Coffee Blog

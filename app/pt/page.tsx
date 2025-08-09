@@ -7,7 +7,7 @@ import {
   Scale,
   Shield,
   CheckCircle,
-  Download,
+  MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -91,7 +91,7 @@ export default function Home() {
               size="lg"
               className="min-w-[200px] bg-[#b3a957] hover:bg-[#ddd27b] text-[#18170f] font-medium transition-all"
             >
-              <Link href="/contact">
+              <Link href="/pt/contato">
                 Solicitar Amostras <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -99,9 +99,9 @@ export default function Home() {
               asChild
               size="lg"
               variant="outline"
-              className="min-w-[200px] bg-transparent hover:bg-white/10 text-white border-white hover:border-[#b3a957] transition-all"
+              className="min-w-[200px] bg-transparent hover:bg-white/50 text-white border-white hover:border-[#b3a957] transition-all"
             >
-              <Link href="/green-coffee">
+              <Link href="/pt/variedades">
                 Ver Variedades <Coffee className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -241,7 +241,7 @@ export default function Home() {
             </div>
             <div className="relative h-[500px]">
               <Image
-                src="photos/coffe.jpg"
+                src="/photos/coffe.jpg"
                 alt="Seleção de cafés verdes"
                 fill
                 className="object-cover rounded-lg"
@@ -262,49 +262,49 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
+            {[
+              {
+                slug: "/pt/blog/insights-cafe-verde",
+                title: "Insights do Mercado de Café Verde",
+                image: "/photos/AdobeStock_179552693.jpeg",
+                tag: "Análise de Mercado",
+                excerpt: "Tendências e previsões do mercado de café verde...",
+              },
+              {
+                slug: "/pt/blog/variedades-cafe-brasileiro",
+                title: "Variedades de Café Brasileiro",
+                image: "/photos/unnamed.jpg",
+                tag: "Variedades",
+                excerpt: "Processos e perfis de sabor do café brasileiro...",
+              },
+              {
+                slug: "/pt/blog/variedades-cafe-colombiano",
+                title: "Variedades de Café Colombiano",
+                image: "/photos/colombia-13-1-optimized.jpg",
+                tag: "Variedades",
+                excerpt: "A diversidade de perfis do café colombiano...",
+              },
+            ].map((post) => (
               <div
-                key={i}
+                key={post.slug}
                 className="rounded-lg overflow-hidden border bg-card"
               >
                 <div className="relative h-48">
                   <Image
-                    src={
-                      i === 1
-                        ? "https://as2.ftcdn.net/v2/jpg/04/65/06/85/1000_F_465068570_ZpGdLiqjzOG4JILcNhRbVzipzPp4W4BX.jpg"
-                        : i === 2
-                        ? "https://t3.ftcdn.net/jpg/06/23/17/06/240_F_623170639_lgGNuAwLWyzv4ddB9lIzZSoYFeLh5mqg.jpg"
-                        : "https://as1.ftcdn.net/v2/jpg/02/70/41/64/1000_F_270416431_O4mZ3lQPJZPKJuMAH6lZehdUTulnbH6p.jpg"
-                    }
-                    alt="Post do blog"
+                    src={post.image}
+                    alt={post.title}
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <div className="text-sm text-muted-foreground mb-2">
-                    {i === 1
-                      ? "Análise de Mercado"
-                      : i === 2
-                      ? "Controle de Qualidade"
-                      : "Origem"}
+                    {post.tag}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    {i === 1
-                      ? "Relatório do Mercado de Café Verde Brasileiro"
-                      : i === 2
-                      ? "Entendendo os Padrões de Classificação"
-                      : "Parcerias Diretas com Produtores"}
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {i === 1
-                      ? "Últimas tendências e previsões do mercado..."
-                      : i === 2
-                      ? "Guia completo dos padrões de qualidade..."
-                      : "Construindo relações sustentáveis..."}
-                  </p>
+                  <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
+                  <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                   <Button variant="link" asChild className="p-0">
-                    <Link href="/blog">Ler Mais</Link>
+                    <Link href={post.slug}>Ler Mais</Link>
                   </Button>
                 </div>
               </div>
@@ -331,7 +331,7 @@ export default function Home() {
               className="w-full sm:w-[200px] bg-[#b3a957] hover:bg-[#d8cd75] text-[#171717] font-medium transition-all hover:scale-105 shadow-lg"
             >
               <Link
-                href="/contact"
+                href="/pt/contato"
                 className="flex items-center justify-center"
               >
                 Solicitar Amostras{" "}
@@ -342,13 +342,15 @@ export default function Home() {
               asChild
               size="lg"
               variant="outline"
-              className="w-full sm:w-[200px] bg-transparent text-white border-2 border-white hover:bg-white/10 hover:border-white/80 font-medium transition-all hover:scale-105"
+              className="w-full sm:w-[200px] bg-transparent text-white border-2 border-white hover:bg-white/50 hover:border-white/80 font-medium transition-all hover:scale-105"
             >
               <Link
-                href="/contact"
+                href="http://wa.me/5535984880810"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center"
               >
-                Baixar Tabela <Download className="ml-2 h-4 w-4" />
+                Whatsapp <MessageCircle className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>

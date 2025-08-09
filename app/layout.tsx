@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Providers } from "@/components/providers";
+import { PageTransition } from "@/components/page-transition";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,9 @@ export default function RootLayout({
         <Providers>
           <div className="flex min-h-screen flex-col">
             <Navigation />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              <PageTransition>{children}</PageTransition>
+            </main>
             <Footer />
           </div>
         </Providers>
