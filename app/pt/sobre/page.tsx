@@ -51,7 +51,7 @@ export default function AboutPage() {
               />
               <div className="absolute -bottom-6 -right-6 bg-primary px-6 py-3 rounded-lg shadow-md">
                 <p className="text-white font-medium text-lg">
-                  15+ Anos de Experiência
+                  20+ Anos de Experiência
                 </p>
               </div>
             </div>
@@ -72,17 +72,25 @@ export default function AboutPage() {
 
               <div className="space-y-6">
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Com mais de 15 anos de experiência no mercado de café, Thiago Cazarini 
-                  é a força motriz por trás da Cazarini Trading. Sob sua liderança, 
-                  a empresa tornou-se uma referência global reconhecida por sua excelência 
-                  na comercialização de cafés especiais.
+                  Com mais de 21 anos de experiência, lidero a Cazarini Trading
+                  Company, uma organização que construí desde o início, em 2009,
+                  que hoje é reconhecida em todos os continentes pela excelência
+                  em comércio de café. A Cazarini Trading Company domina a
+                  gestão de riscos, vendas externas e aquisições no mercado
+                  interno, sempre com um olhar atento aos detalhes até o
+                  cumprimento de cada contrato, minimizando riscos, com pró
+                  atividade quando na solução de eventualidades.
                 </p>
 
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Como Principal Comerciante na Montesa Exportadora, supervisiona 
-                  todos os aspectos de gestão de risco, vendas internacionais e 
-                  aquisições domésticas, combinando atenção meticulosa aos detalhes 
-                  com expertise completa em logística.
+                  Através da negociação e do desenvolvimento de novos mercados e
+                  clientes, contribuo para que grãos de café de alta qualidade
+                  viagem pelo mundo. Sou fluente em inglês e espanhol, com
+                  conhecimento básico de italiano, e utilizo essas habilidades
+                  para fortalecer redes de comunicação e parcerias estratégicas
+                  na indústria do café, abrangendo operações de trading,
+                  logística, gerenciamento de riscos, produção, armazenamento e
+                  controle de qualidade.
                 </p>
 
                 <div className="space-y-5 pt-4">
@@ -93,9 +101,10 @@ export default function AboutPage() {
                         Desenvolvimento de Mercado
                       </h4>
                       <p className="text-gray-700">
-                        Especialista em desenvolver novos mercados internacionais e 
-                        cultivar relações de longo prazo, facilitando a distribuição 
-                        global de grãos de café premium.
+                        Especialista em desenvolver novos mercados
+                        internacionais e cultivar relações de longo prazo,
+                        facilitando a distribuição global de grãos de café
+                        premium.
                       </p>
                     </div>
                   </div>
@@ -107,9 +116,9 @@ export default function AboutPage() {
                         Comunicação Multilíngue
                       </h4>
                       <p className="text-gray-700">
-                        Fluente em inglês e espanhol com conhecimento prático de italiano, 
-                        garantindo comunicação eficaz com parceiros internacionais em 
-                        toda a cadeia produtiva do café.
+                        Fluente em inglês e espanhol com conhecimento prático de
+                        italiano, garantindo comunicação eficaz com parceiros
+                        internacionais em toda a cadeia produtiva do café.
                       </p>
                     </div>
                   </div>
@@ -121,8 +130,9 @@ export default function AboutPage() {
                         Expertise Abrangente
                       </h4>
                       <p className="text-gray-700">
-                        Domínio completo em trading de commodities, otimização logística, 
-                        análise de riscos, gestão produtiva e protocolos de controle de qualidade.
+                        Domínio completo em trading de commodities, otimização
+                        logística, análise de riscos, gestão produtiva e
+                        protocolos de controle de qualidade.
                       </p>
                     </div>
                   </div>
@@ -152,7 +162,7 @@ export default function AboutPage() {
                   <span className="font-medium text-gray-900">
                     Cazarini Trading
                   </span>{" "}
-                  consolidou-se como referência no comércio de cafés especiais, 
+                  consolidou-se como referência no comércio de cafés especiais,
                   atendendo{" "}
                   <span className="font-medium text-gray-900">
                     140+ clientes
@@ -166,15 +176,15 @@ export default function AboutPage() {
 
                 <div className="border-l-2 border-gray-200 pl-4">
                   <p className="text-gray-600 italic mb-2">
-                    "Mantendo crescimento consistente de 15% ao ano através 
-                    de qualidade excepcional e logística confiável"
+                    "Mantendo crescimento consistente de 15% ao ano através de
+                    qualidade excepcional e logística confiável"
                   </p>
                 </div>
 
                 <p className="text-gray-600 leading-relaxed">
-                  Nossas operações integradas abrangem desde a aquisição nas 
-                  melhores regiões cafeeiras do Brasil até a distribuição global, 
-                  apoiadas por:
+                  Nossas operações integradas abrangem desde a aquisição nas
+                  melhores regiões cafeeiras do Brasil até a distribuição
+                  global, apoiadas por:
                 </p>
 
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">

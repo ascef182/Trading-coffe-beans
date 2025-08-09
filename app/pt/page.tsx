@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { Carousel } from "@/components/ui/carousel";
 
 export default function Home() {
   const stats = [
@@ -24,14 +25,37 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       {/* Seção Hero */}
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Imagem de fundo com gradiente */}
+        {/* Carrossel de fundo com gradiente */}
         <div className="absolute inset-0">
-          <Image
-            src="/photos/pe_de_cafe_verde.jpg"
-            alt="Grãos premium de café verde brasileiro"
-            fill
-            className="object-cover"
-            priority
+          <Carousel
+            images={[
+              {
+                src: "/photos/cafe-verde.jpeg",
+                alt: "Grãos frescos de café verde",
+              },
+              {
+                src: "/photos/unnamed.jpg",
+                alt: "Seleção premium de café",
+              },
+              {
+                src: "/photos/cafe-vermelho.jpeg",
+                alt: "Cerejas de café vermelhas na árvore",
+              },
+              {
+                src: "/photos/fileiras-de-cafe.jpeg",
+                alt: "Fileiras de plantação de café",
+              },
+              {
+                src: "/photos/pe-de-cafe-amarelo.jpeg",
+                alt: "Grãos de café amarelo prontos para processamento",
+              },
+              {
+                src: "/photos/foto-drone-pes-cafe.jpeg",
+                alt: "Vista aérea da plantação de café",
+              },
+            ]}
+            autoPlayInterval={8000}
+            className="w-full h-full"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#18170f] via-[#18170f]/70 to-transparent" />
         </div>
@@ -130,7 +154,8 @@ export default function Home() {
               Por Que Escolher Nosso Café Verde
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Grãos de café verde premium diretamente das melhores fazendas do Brasil
+              Grãos de café verde premium diretamente das melhores fazendas do
+              Brasil
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -151,7 +176,9 @@ export default function Home() {
               <div className="mb-6 p-4 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
                 <Shield className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Garantia de Qualidade</h3>
+              <h3 className="text-xl font-semibold mb-3">
+                Garantia de Qualidade
+              </h3>
               <p className="text-muted-foreground">
                 Todos os lotes avaliados por Q-Graders com mínimo 85 pontos SCA
                 e relatórios completos de rastreabilidade
@@ -163,9 +190,7 @@ export default function Home() {
               <div className="mb-6 p-4 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
                 <Leaf className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">
-                Origem Sustentável
-              </h3>
+              <h3 className="text-xl font-semibold mb-3">Origem Sustentável</h3>
               <p className="text-muted-foreground">
                 Parcerias certificadas Rainforest Alliance com processamento
                 ecológico e práticas de comércio justo
@@ -192,13 +217,9 @@ export default function Home() {
                     Cafés Brasileiros
                   </h4>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• Totalmente Lavado</li>
-                    <li>• Semi-Lavado</li>
-                    <li>• Naturais (Copo Fino)</li>
-                    <li>• Naturais (Bom Copo)</li>
-                    <li>• Grinders</li>
-                    <li>• Rio Minas</li>
-                    <li>• Conillons</li>
+                    <li>• NY 2/3 Semi Washed 17/18 Fine Cup</li>
+                    <li>• NY 2/3 Semi Washed 14/16 Fine Cup</li>
+                    <li>• Natural NY 2/3 Cerrado/Mogiana 17/18 Fine Cup</li>
                   </ul>
                 </div>
                 <div>
@@ -220,7 +241,7 @@ export default function Home() {
             </div>
             <div className="relative h-[500px]">
               <Image
-                src="photos/varieties.jpg"
+                src="photos/coffe.jpg"
                 alt="Seleção de cafés verdes"
                 fill
                 className="object-cover rounded-lg"
@@ -236,7 +257,8 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">Mercado do Café</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Análises especializadas e atualizações sobre o mercado de café verde
+              Análises especializadas e atualizações sobre o mercado de café
+              verde
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

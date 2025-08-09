@@ -11,33 +11,68 @@ export const routeMapping: Record<string, Record<Language, string>> = {
   "/contact": { en: "/contact", pt: "/pt/contato" },
 };
 
+// Map EN<->PT slugs for blog posts
+const blogPostSlugMap = {
+  enToPt: {
+    "brazilian-coffee-varieties": "variedades-cafe-brasileiro",
+    "colombian-coffee-varieties": "variedades-cafe-colombiano",
+    "green-coffee-insights": "insights-cafe-verde",
+  },
+  ptToEn: {
+    "variedades-cafe-brasileiro": "brazilian-coffee-varieties",
+    "variedades-cafe-colombiano": "colombian-coffee-varieties",
+    "insights-cafe-verde": "green-coffee-insights",
+  },
+} as const;
+
 // Função para obter a rota traduzida
 export function getTranslatedRoute(path: string, language: Language): string {
-  // Se a rota já começa com /pt/, retorna a mesma rota
-  if (path.startsWith("/pt/")) {
-    return path;
+  // Normaliza trailing slash
+  const normalized =
+    path.endsWith("/") && path !== "/" ? path.slice(0, -1) : path;
+
+  if (language === "pt") {
+    // Já em PT
+    if (normalized === "/pt" || normalized.startsWith("/pt/"))
+      return normalized;
+    // Mapeamento explícito
+    if (routeMapping[normalized]) return routeMapping[normalized].pt;
+    // Blog posts EN -> PT
+    if (normalized.startsWith("/blog/posts/")) {
+      const slug = normalized.replace("/blog/posts/", "");
+      const ptSlug = (blogPostSlugMap.enToPt as Record<string, string>)[slug];
+      return ptSlug ? `/pt/blog/${ptSlug}` : "/pt/blog`";
+    }
+    // Fallback: prefixa /pt para qualquer rota desconhecida
+    return normalized === "/" ? "/pt" : `/pt${normalized}`;
   }
-  
-  // Se a rota existe no mapeamento, retorna a versão traduzida
-  if (routeMapping[path]) {
-    return routeMapping[path][language];
+
+  // language === 'en'
+  if (normalized === "/pt") return "/";
+  if (normalized.startsWith("/pt/")) {
+    // Blog posts PT -> EN
+    if (normalized.startsWith("/pt/blog/")) {
+      const slug = normalized.replace("/pt/blog/", "");
+      const enSlug = (blogPostSlugMap.ptToEn as Record<string, string>)[slug];
+      return enSlug ? `/blog/posts/${enSlug}` : "/blog";
+    }
+    // Remove o prefixo /pt para qualquer outra rota
+    return normalized.slice(3) || "/";
   }
-  
-  // Se a rota não existe no mapeamento, retorna a mesma rota
-  return path;
+  if (routeMapping[normalized]) return routeMapping[normalized].en;
+  return normalized;
 }
 
 // Função para obter a rota original a partir de uma rota traduzida
 export function getOriginalRoute(path: string): string {
-  // Se a rota começa com /pt/, procura a rota original
-  if (path.startsWith("/pt/")) {
-    for (const [originalPath, translations] of Object.entries(routeMapping)) {
-      if (translations.pt === path) {
-        return originalPath;
-      }
+  // Para rotas PT aninhadas, retorna a versão EN removendo o prefixo
+  if (path === "/pt") return "/";
+  if (path.startsWith("/pt/")) return path.slice(3) || "/";
+  // Se houver mapeamento exato, retorna a chave original
+  for (const [originalPath, translations] of Object.entries(routeMapping)) {
+    if (translations.pt === path || translations.en === path) {
+      return originalPath;
     }
   }
-  
-  // Se não encontrar, retorna a mesma rota
   return path;
-} 
+}

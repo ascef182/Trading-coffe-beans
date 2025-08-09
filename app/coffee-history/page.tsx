@@ -43,7 +43,7 @@ type ImagePaths = {
 
 const IMAGES: ImagePaths = {
   hero: "/photos/Café-Verde.webp",
-  impact: "/photos/sp.webp",
+  impact: "/photos/foto-drone.jpeg",
 };
 
 interface TimelineProps {

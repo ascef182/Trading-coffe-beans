@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Mail,
   Smartphone,
@@ -8,61 +10,68 @@ import {
   FileText,
 } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/contexts/language-context";
 
 export function Footer() {
+  const { language } = useLanguage();
+  const isPT = language === "pt";
   return (
     <footer className="w-full border-t bg-background/95 backdrop-blur">
       <div className="container">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12">
           {/* Column 1: Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Quick Links</h4>
+            <h4 className="text-lg font-semibold">
+              {isPT ? "Links Rápidos" : "Quick Links"}
+            </h4>
             <nav className="space-y-3">
               <Link
-                href="/"
+                href={isPT ? "/pt" : "/"}
                 className="block text-muted-foreground hover:text-foreground hover:underline"
               >
-                Home
+                {isPT ? "Início" : "Home"}
               </Link>
               <Link
-                href="/about"
+                href={isPT ? "/pt/sobre" : "/about"}
                 className="block text-muted-foreground hover:text-foreground hover:underline"
               >
-                About
+                {isPT ? "Sobre" : "About"}
               </Link>
               <Link
-                href="/coffee-history"
+                href={isPT ? "/pt/historia-do-cafe" : "/coffee-history"}
                 className="block text-muted-foreground hover:text-foreground hover:underline"
               >
-                Coffee History
+                {isPT ? "História do Café" : "Coffee History"}
               </Link>
               <Link
-                href="/contact"
+                href={isPT ? "/pt/contato" : "/contact"}
                 className="block text-muted-foreground hover:text-foreground hover:underline"
               >
-                Contact
+                {isPT ? "Contato" : "Contact"}
               </Link>
             </nav>
           </div>
 
           {/* Column 2: Products */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Products</h4>
+            <h4 className="text-lg font-semibold text-white">
+              {isPT ? "Produtos" : "Products"}
+            </h4>
             <nav className="space-y-3">
               <Link
-                href="/green-coffee"
+                href={isPT ? "/pt/cafe-verde" : "/green-coffee"}
                 className="block text-muted-foreground hover:text-foreground hover:underline"
               >
-                Green Coffee
+                {isPT ? "Café Verde" : "Green Coffee"}
               </Link>
               <Link
-                href="/varieties"
+                href={isPT ? "/pt/variedades" : "/varieties"}
                 className="block text-muted-foreground hover:text-foreground hover:underline"
               >
-                Varieties
+                {isPT ? "Variedades" : "Varieties"}
               </Link>
               <Link
-                href="/blog"
+                href={isPT ? "/pt/blog" : "/blog"}
                 className="block text-muted-foreground hover:text-foreground hover:underline"
               >
                 Blog
@@ -72,28 +81,30 @@ export function Footer() {
 
           {/* New Column 3: Legal Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Information</h4>
+            <h4 className="text-lg font-semibold">
+              {isPT ? "Informações" : "Information"}
+            </h4>
             <nav className="space-y-3">
               <Link
                 href="/privacy"
                 className="flex items-center gap-2 text-muted-foreground hover:text-foreground hover:underline"
               >
                 <Shield className="h-4 w-4" />
-                Privacy Policy
+                {isPT ? "Política de Privacidade" : "Privacy Policy"}
               </Link>
               <Link
                 href="/terms"
                 className="flex items-center gap-2 text-muted-foreground hover:text-foreground hover:underline"
               >
                 <FileText className="h-4 w-4" />
-                Terms of Use
+                {isPT ? "Termos de Uso" : "Terms of Use"}
               </Link>
               <Link
                 href="/faq"
                 className="flex items-center gap-2 text-muted-foreground hover:text-foreground hover:underline"
               >
                 <HelpCircle className="h-4 w-4" />
-                FAQ
+                {isPT ? "Perguntas Frequentes" : "FAQ"}
               </Link>
             </nav>
           </div>
@@ -101,7 +112,9 @@ export function Footer() {
           {/* Column 4: Connect & Contact */}
           <div className="space-y-6">
             <div className="space-y-4">
-              <h4 className="text-lg font-semibold">Connect With Us</h4>
+              <h4 className="text-lg font-semibold">
+                {isPT ? "Conecte-se Conosco" : "Connect With Us"}
+              </h4>
               <div className="flex gap-4">
                 <Link
                   href="mailto:thiago@cazarini.com"
@@ -113,14 +126,16 @@ export function Footer() {
                 <Link
                   href="https://instagram.com/cazarinitrading"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground"
                   title="Instagram"
                 >
                   <Instagram className="h-6 w-6" />
                 </Link>
                 <Link
-                  href="https://linkedin.com/company/cazarini-trading"
+                  href="https://www.linkedin.com/in/thiago-marques-cazarini-903a96b/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground"
                   title="LinkedIn"
                 >
@@ -130,7 +145,9 @@ export function Footer() {
             </div>
 
             <div className="space-y-4">
-              <h4 className="text-lg font-semibold">Contact Details</h4>
+              <h4 className="text-lg font-semibold">
+                {isPT ? "Detalhes de Contato" : "Contact Details"}
+              </h4>
               <div className="space-y-2 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
@@ -154,7 +171,9 @@ export function Footer() {
         {/* Copyright */}
         <div className="border-t pt-6 pb-8 text-center">
           <p className="text-sm text-muted-foreground">
-            © 2025 Cazarini Trading. All rights reserved.
+            {isPT
+              ? "© 2025 Cazarini Trading. Todos os direitos reservados."
+              : "© 2025 Cazarini Trading. All rights reserved."}
           </p>
         </div>
       </div>

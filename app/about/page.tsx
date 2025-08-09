@@ -51,7 +51,7 @@ export default function AboutPage() {
               />
               <div className="absolute -bottom-6 -right-6 bg-primary px-6 py-3 rounded-lg shadow-md">
                 <p className="text-white font-medium text-lg">
-                  15+ Years Experience
+                  20+ Years Experience
                 </p>
               </div>
             </div>
@@ -72,18 +72,25 @@ export default function AboutPage() {
 
               <div className="space-y-6">
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  With over 15 years of experience in the coffee industry,
-                  Thiago Cazarini is the driving force behind Cazarini Trading
-                  Company. Under his leadership, the company has grown into a
-                  globally recognized entity renowned for its excellence in
-                  specialty coffee trading.
+                  With over 21 years of experience, I lead Cazarini Trading
+                  Company, an organization I built from the ground up in 2009.
+                  Today, it is recognized across all continents for its
+                  excellence in coffee trading. Cazarini Trading Company excels
+                  in risk management, international sales, and domestic
+                  procurement, maintaining a meticulous focus on every detail
+                  until contract fulfillment—always minimizing risk and
+                  proactively addressing any challenges that may arise.
                 </p>
 
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  As Head Coffee Trader at Montesa Exportadora, he oversees all
-                  aspects of risk management, international sales, and domestic
-                  market acquisitions, combining meticulous attention to detail
-                  with comprehensive logistics expertise.
+                  Through negotiation and the development of new markets and
+                  clients, I help ensure that high-quality coffee beans travel
+                  the world. I am fluent in English and Spanish, with basic
+                  proficiency in Italian, and I leverage these language skills
+                  to strengthen communication networks and strategic
+                  partnerships across the coffee industry—encompassing trading
+                  operations, logistics, risk management, production,
+                  warehousing, and quality control.
                 </p>
 
                 <div className="space-y-5 pt-4">

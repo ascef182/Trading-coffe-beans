@@ -43,7 +43,7 @@ type ImagePaths = {
 
 const IMAGES: ImagePaths = {
   hero: "/photos/Café-Verde.webp",
-  impact: "/photos/sp.webp",
+  impact: "/photos/foto-drone.jpeg",
 };
 
 interface TimelineProps {
@@ -97,10 +97,10 @@ const Introduction = () => (
       A Jornada do Café
     </h2>
     <p className="text-base sm:text-lg text-muted-foreground mb-6 text-center">
-      A trajetória do café no Brasil é marcada por ambição, inovação e 
-      transformação. Desde seus humildes começos no século XVIII até se tornar 
-      o maior produtor mundial, o café moldou a história, economia e cultura 
-      do país.
+      A trajetória do café no Brasil é marcada por ambição, inovação e
+      transformação. Desde seus humildes começos no século XVIII até se tornar o
+      maior produtor mundial, o café moldou a história, economia e cultura do
+      país.
     </p>
   </div>
 );

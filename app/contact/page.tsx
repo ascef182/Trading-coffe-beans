@@ -15,15 +15,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { BackButton } from "@/components/back-button";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
-interface ContactFormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  company: string;
-  message: string;
-}
+const schema = z.object({
+  firstName: z.string().min(2),
+  lastName: z.string().min(2),
+  email: z.string().email(),
+  company: z.string().min(2),
+  message: z.string().min(10),
+});
+type ContactFormData = z.infer<typeof schema>;
 
 export default function ContactPage() {
   const {
@@ -31,7 +34,7 @@ export default function ContactPage() {
     handleSubmit,
     reset,
     formState: { isSubmitting },
-  } = useForm<ContactFormData>();
+  } = useForm<ContactFormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = async (data: ContactFormData) => {
     try {

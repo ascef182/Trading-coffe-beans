@@ -127,69 +127,14 @@ export default function GreenCoffeePage() {
     <div className="flex flex-col min-h-screen bg-gray-50">
       <BackButton />
 
-      {/* Hero Section */}
-      <section className="relative h-[20vh] min-h-[300px] flex items-center justify-center">
-        <div className="absolute inset-0">
-          <Image
-            src="/photos/AdobeStock_179552693.jpeg"
-            alt="Green coffee beans"
-            fill
-            className="object-cover filter brightness-50"
-            priority
-          />
-        </div>
-        <div className="container relative z-10 text-center text-white px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Global Green Coffee Market
-          </h1>
-        </div>
-      </section>
-
       {/* Main Content */}
       <main className="py-16">
         <div className="container max-w-7xl mx-auto px-4 space-y-20">
-          {/* Global Production & Export */}
-          <section className="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <div className="p-8 md:p-12 bg-gradient-to-r from-[#b3a957] to-[#a39d57] text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">
-                Production and Export
-              </h2>
-              <p className="text-lg">
-                Up-to-date data from the market's key players
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
-              {Object.entries(productionData).map(([country, data]) => (
-                <div key={country} className="p-8 text-center">
-                  <h3 className="text-xl font-semibold mb-4 capitalize">
-                    {country}
-                  </h3>
-                  <div className="space-y-3">
-                    <div>
-                      <p className="text-sm text-gray-500">Volume</p>
-                      <p className="text-2xl font-bold text-[#b3a957]">
-                        {data.volume}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500">Value</p>
-                      <p className="text-xl font-semibold">{data.value}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500">Growth</p>
-                      <p className="text-lg font-medium">{data.growth}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
           {/* What is Green Coffee? */}
           <section className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/photos/grãoDeCafeVerdesETorrados.jpeg"
+                src="/photos/cafe-verde.jpeg"
                 alt="Green coffee beans close-up"
                 fill
                 className="object-cover"
@@ -236,6 +181,43 @@ export default function GreenCoffeePage() {
                     <h3 className="text-lg font-semibold">{factor.title}</h3>
                   </div>
                   <p className="text-gray-600">{factor.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Global Production & Export */}
+          <section className="bg-white rounded-3xl shadow-xl overflow-hidden">
+            <div className="p-8 md:p-12 bg-gradient-to-r from-[#b3a957] to-[#a39d57] text-white">
+              <h2 className="text-3xl md:text-4xl font-bold mb-2">
+                Production and Export
+              </h2>
+              <p className="text-lg">
+                Up-to-date data from the market's key players
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+              {Object.entries(productionData).map(([country, data]) => (
+                <div key={country} className="p-8 text-center">
+                  <h3 className="text-xl font-semibold mb-4 capitalize">
+                    {country}
+                  </h3>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-sm text-gray-500">Volume</p>
+                      <p className="text-2xl font-bold text-[#b3a957]">
+                        {data.volume}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Value</p>
+                      <p className="text-xl font-semibold">{data.value}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Growth</p>
+                      <p className="text-lg font-medium">{data.growth}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -309,9 +291,14 @@ export default function GreenCoffeePage() {
                 insights.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-[#b3a957] px-8 py-3 rounded-full font-semibold hover:bg-emerald-100 transition-all flex items-center justify-center gap-2">
+                <a
+                  href="https://www.linkedin.com/in/thiago-marques-cazarini-903a96b/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-[#b3a957] px-8 py-3 rounded-full font-semibold hover:bg-emerald-100 transition-all flex items-center justify-center gap-2"
+                >
                   Linkedin <ArrowRight className="w-5 h-5" />
-                </button>
+                </a>
                 <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-all">
                   Contact
                 </button>

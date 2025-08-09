@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { Carousel } from "@/components/ui/carousel";
 
 export default function Home() {
   const stats = [
@@ -24,14 +25,37 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Background Image with Gradient Overlay */}
+        {/* Background Carousel with Gradient Overlay */}
         <div className="absolute inset-0">
-          <Image
-            src="/photos/pe_de_cafe_verde.jpg"
-            alt="Premium Brazilian green coffee beans"
-            fill
-            className="object-cover"
-            priority
+          <Carousel
+            images={[
+              {
+                src: "/photos/cafe-verde.jpeg",
+                alt: "Fresh green coffee beans",
+              },
+              {
+                src: "/photos/unnamed.jpg",
+                alt: "Premium coffee selection",
+              },
+              {
+                src: "/photos/fileiras-de-cafe.jpeg",
+                alt: "Coffee plantation rows",
+              },
+              {
+                src: "/photos/cafe-vermelho.jpeg",
+                alt: "Red coffee cherries on the tree",
+              },
+              {
+                src: "/photos/pe-de-cafe-amarelo.jpeg",
+                alt: "Yellow coffee beans ready for processing",
+              },
+              {
+                src: "/photos/foto-drone-pes-cafe.jpeg",
+                alt: "Aerial view of coffee plantation",
+              },
+            ]}
+            autoPlayInterval={8000}
+            className="w-full h-full"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#18170f] via-[#18170f]/70 to-transparent" />
         </div>
@@ -77,7 +101,7 @@ export default function Home() {
               variant="outline"
               className="min-w-[200px] bg-transparent hover:bg-white/10 text-white border-white hover:border-[#b3a957] transition-all"
             >
-              <Link href="/green-coffee">
+              <Link href="/varieties">
                 Explore Varieties <Coffee className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -194,13 +218,9 @@ export default function Home() {
                     Brazilian Coffees
                   </h4>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• Fully Washed</li>
-                    <li>• Semi-Washed</li>
-                    <li>• Naturals (Fine Cup)</li>
-                    <li>• Naturals (Good Cup)</li>
-                    <li>• Grinders</li>
-                    <li>• Rio Minas</li>
-                    <li>• Conillons</li>
+                    <li>• NY 2/3 Semi Washed 17/18 Fine Cup</li>
+                    <li>• NY 2/3 Semi Washed 14/16 Fine Cup</li>
+                    <li>• Natural NY 2/3 Cerrado/Mogiana 17/18 Fine Cup</li>
                   </ul>
                 </div>
                 <div>
@@ -222,7 +242,7 @@ export default function Home() {
             </div>
             <div className="relative h-[500px]">
               <Image
-                src="photos/varieties.jpg"
+                src="photos/coffe.jpg"
                 alt="Green coffee selection"
                 fill
                 className="object-cover rounded-lg"

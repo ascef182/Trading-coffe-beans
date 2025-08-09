@@ -81,8 +81,7 @@ export function Navigation() {
 
   const toggleLanguage = () => {
     const newLanguage = language === "en" ? "pt" : "en";
-    const currentRoute = getOriginalRoute(pathname);
-    const translatedRoute = getTranslatedRoute(currentRoute, newLanguage);
+    const translatedRoute = getTranslatedRoute(pathname, newLanguage);
     setLanguage(newLanguage);
     router.push(translatedRoute);
   };
@@ -94,14 +93,17 @@ export function Navigation() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <Link href={language === "en" ? "/" : "/pt"} className="flex items-center h-full">
+        <Link
+          href={language === "en" ? "/" : "/pt"}
+          className="flex items-center h-full"
+        >
           <div className="h-16 w-auto">
             <Image
               src="/Logomarca-Cazarini-12.09.13.svg"
               alt="Cazarini Trading"
               width={200}
               height={64}
-              className="h-full w-auto object-contain"
+              className="w-[200px] h-[64px] object-contain"
               priority
             />
           </div>
@@ -134,12 +136,12 @@ export function Navigation() {
             {language === "en" ? (
               <>
                 <USFlag />
-                <span className="text-xs">EN</span>
+                <span className="text-xs">PT</span>
               </>
             ) : (
               <>
                 <BRFlag />
-                <span className="text-xs">PT</span>
+                <span className="text-xs">EN</span>
               </>
             )}
           </Button>

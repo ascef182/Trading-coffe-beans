@@ -3,10 +3,18 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: { 
-    domains: ['images.unsplash.com'],
-    unoptimized: true 
-  }
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
+    unoptimized: true,
+  },
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
 };
 
 module.exports = nextConfig;

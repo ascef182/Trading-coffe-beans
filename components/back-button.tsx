@@ -42,7 +42,7 @@ export function BackButton({ href }: BackButtonProps) {
       className={`fixed top-24 left-4 z-50 rounded-full bg-transparent transition-all duration-300 ${
         isScrolled
           ? "border-primary hover:bg-primary/10 hover:text-primary text-primary"
-          : "border-white hover:bg-white/20 text-white"
+          : "border-black hover:bg-white/20 text-black"
       }`}
       aria-label="Go back"
       tabIndex={0}
