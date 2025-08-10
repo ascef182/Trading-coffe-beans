@@ -79,9 +79,8 @@ export default function Home() {
 
           {/* Descrição */}
           <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto text-white/90 leading-relaxed">
-            Diretamente adquiridos de fazendas brasileiras sustentáveis, nossos
-            grãos de café verde de qualidade especial oferecem excelência e
-            rastreabilidade para torrefadores exigentes.
+            Nossos grãos de café verde de qualidade especial oferecem excelência
+            e rastreabilidade para torrefadores exigentes.
           </p>
 
           {/* Botões */}

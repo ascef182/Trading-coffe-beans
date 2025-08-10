@@ -64,8 +64,8 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-background py-12 md:py-16">
       <BackButton />
-      <div className="container">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">
+      <div className="container ">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 mt-6">
           Coffee Blog
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

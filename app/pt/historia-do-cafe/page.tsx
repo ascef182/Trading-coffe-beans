@@ -69,7 +69,7 @@ export default function CoffeeHistoryPage() {
 }
 
 const HeroSection = () => (
-  <section className="relative h-[300px] sm:h-[400px] flex items-center justify-center">
+  <section className="relative h-[300px] sm:h-[400px] flex items-center justify-center mt-0">
     <div className="absolute inset-0 bg-black/30 z-0" />
     <Image
       src={IMAGES.hero}
@@ -126,8 +126,10 @@ const Timeline: React.FC<TimelineProps> = ({ events }) => (
           >
             <div className="bg-white p-6 sm:p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300">
               <div className="flex flex-col sm:flex-row items-start sm:items-center mb-4">
-                <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary flex items-center justify-center text-white font-bold mb-2 sm:mb-0 sm:mr-4 text-sm">
-                  {event.year}
+                <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary grid place-items-center text-white font-bold mb-2 sm:mb-0 sm:mr-4 text-sm px-1">
+                  <span className="text-center leading-tight">
+                    {event.year}
+                  </span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-gray-800">
                   {event.title}

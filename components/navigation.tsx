@@ -92,12 +92,12 @@ export function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto w-full max-w-7xl px-2 md:px-4 flex h-16 items-center">
+      <div className="w-full px-0 sm:px-2 md:px-4 flex h-16 items-center">
         <Link
           href={language === "en" ? "/" : "/pt"}
-          className="flex items-center h-full"
+          className="flex items-center h-full mr-auto"
         >
-          <div className="h-16 w-auto ml-1 md:ml-0">
+          <div className="h-16 w-auto ml-0">
             <Image
               src="/Logomarca-Cazarini-12.09.13.svg"
               alt="Cazarini Trading"
@@ -111,7 +111,7 @@ export function Navigation() {
           </div>
         </Link>
 
-        <nav className="flex flex-1 items-center justify-end space-x-6">
+        <nav className="flex items-center justify-end space-x-6">
           <div className="hidden md:flex space-x-6">
             {routes[language].map((route) => (
               <Link

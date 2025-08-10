@@ -19,7 +19,10 @@ import { useForm as useFormspree, ValidationError } from "@formspree/react";
 // Using Formspree built-in validation
 
 export default function ContactPage() {
-  const [state, handleSubmit] = useFormspree("mblkqgvo");
+  const formId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID as
+    | string
+    | undefined;
+  const [state, handleSubmit] = useFormspree(formId ?? "");
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -100,7 +103,12 @@ export default function ContactPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {state.succeeded ? (
+                  {!formId ? (
+                    <p className="text-red-600">
+                      Form ID not configured. Set NEXT_PUBLIC_FORMSPREE_FORM_ID
+                      in .env.local
+                    </p>
+                  ) : state.succeeded ? (
                     <p className="text-green-600">
                       Thanks! We&apos;ll get back to you soon.
                     </p>

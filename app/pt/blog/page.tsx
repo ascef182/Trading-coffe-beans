@@ -8,7 +8,7 @@ export default function BlogPage() {
     <div className="flex flex-col min-h-screen">
       <BackButton />
       <div className="container py-12">
-        <h1 className="text-3xl font-bold mb-6">Blog</h1>
+        <h1 className="text-3xl font-bold mb-6 mt-6">Blog</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Link href="/pt/blog/variedades-cafe-brasileiro" className="group">
             <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 group-hover:scale-105">
@@ -21,9 +21,12 @@ export default function BlogPage() {
                 />
               </div>
               <div className="p-6">
-                <h2 className="text-xl font-semibold mb-2">Variedades de Café Brasileiro</h2>
+                <h2 className="text-xl font-semibold mb-2">
+                  Variedades de Café Brasileiro
+                </h2>
                 <p className="text-gray-600">
-                  Explore as principais variedades de café cultivadas no Brasil e suas características únicas.
+                  Explore as principais variedades de café cultivadas no Brasil
+                  e suas características únicas.
                 </p>
               </div>
             </div>
@@ -40,9 +43,12 @@ export default function BlogPage() {
                 />
               </div>
               <div className="p-6">
-                <h2 className="text-xl font-semibold mb-2">Variedades de Café Colombiano</h2>
+                <h2 className="text-xl font-semibold mb-2">
+                  Variedades de Café Colombiano
+                </h2>
                 <p className="text-gray-600">
-                  Descubra as características distintivas dos cafés colombianos e suas regiões de produção.
+                  Descubra as características distintivas dos cafés colombianos
+                  e suas regiões de produção.
                 </p>
               </div>
             </div>
@@ -59,9 +65,12 @@ export default function BlogPage() {
                 />
               </div>
               <div className="p-6">
-                <h2 className="text-xl font-semibold mb-2">Insights sobre Café Verde</h2>
+                <h2 className="text-xl font-semibold mb-2">
+                  Insights sobre Café Verde
+                </h2>
                 <p className="text-gray-600">
-                  Conheça as características, benefícios e usos do café verde no mercado global.
+                  Conheça as características, benefícios e usos do café verde no
+                  mercado global.
                 </p>
               </div>
             </div>

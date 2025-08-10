@@ -48,13 +48,11 @@ export function BackButton({ href }: BackButtonProps) {
 
   return (
     <>
-      {/* Spacer to push content below the back button on mobile */}
-      <div className="h-10 md:h-0" aria-hidden="true" />
       <Button
         variant="ghost"
         size="icon"
         onClick={handleClick}
-        className={`fixed left-3 md:left-4 top-20 md:top-24 z-50 rounded-full bg-black/25 backdrop-blur-sm transition-all duration-300 ${
+        className={`fixed left-3 md:left-4 top-7 md:top-24 z-50 rounded-full bg-black/25 backdrop-blur-sm transition-all duration-300 ${
           isScrolled
             ? "hover:bg-black/20 text-white"
             : "hover:bg-black/30 text-white"

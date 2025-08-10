@@ -79,9 +79,8 @@ export default function Home() {
 
           {/* Description with max-width */}
           <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto text-white/90 leading-relaxed">
-            Directly sourced from sustainable Brazilian farms, our
-            specialty-grade green coffee beans deliver exceptional quality and
-            traceability for discerning roasters.
+            Our specialty-grade green coffee beans deliver exceptional quality
+            and traceability for discerning roasters.
           </p>
 
           {/* Buttons with improved hover states */}

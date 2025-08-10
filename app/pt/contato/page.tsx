@@ -19,7 +19,10 @@ import { useForm as useFormspree, ValidationError } from "@formspree/react";
 // Validação básica controlada pelo Formspree
 
 export default function PaginaContato() {
-  const [state, handleSubmit] = useFormspree("mblkqgvo");
+  const formId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID as
+    | string
+    | undefined;
+  const [state, handleSubmit] = useFormspree(formId ?? "");
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -100,7 +103,12 @@ export default function PaginaContato() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {state.succeeded ? (
+                  {!formId ? (
+                    <p className="text-red-600">
+                      Formulário não configurado. Defina
+                      NEXT_PUBLIC_FORMSPREE_FORM_ID em .env.local
+                    </p>
+                  ) : state.succeeded ? (
                     <p className="text-green-600">
                       Obrigado! Em breve entraremos em contato.
                     </p>
