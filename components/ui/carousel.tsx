@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { Coffee } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface CarouselProps {
@@ -11,12 +12,14 @@ interface CarouselProps {
   }[];
   autoPlayInterval?: number;
   className?: string;
+  showCoffeeIcon?: boolean;
 }
 
 export function Carousel({
   images,
   autoPlayInterval = 8000,
   className,
+  showCoffeeIcon = false,
 }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -67,21 +70,24 @@ export function Carousel({
         ))}
       </div>
 
-      {/* Dots Indicator */}
-      <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-[5] px-2">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={cn(
-              "w-3 h-3 rounded-full transition-all duration-200",
-              index === currentIndex
-                ? "bg-white scale-125"
-                : "bg-white/50 hover:bg-white/75"
-            )}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+      {/* Coffee icon + Dots container */}
+      <div className="absolute bottom-8 sm:bottom-10 md:bottom-14 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center space-y-3 sm:space-y-2 px-2">
+        {showCoffeeIcon && <Coffee className="w-5 h-5 text-white/90" />}
+        <div className="flex space-x-2">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={cn(
+                "w-3 h-3 rounded-full transition-all duration-200",
+                index === currentIndex
+                  ? "bg-white scale-125"
+                  : "bg-white/50 hover:bg-white/75"
+              )}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -107,7 +107,7 @@ export default function Home() {
           </div>
 
           {/* Trust indicators */}
-          <div className="mt-16 max-[480px]:mt-12 flex flex-wrap justify-center gap-6 text-white/80 text-sm">
+          <div className="mt-20 max-[480px]:mt-14 flex flex-wrap justify-center gap-6 text-white/80 text-sm">
             <div className="flex items-center gap-2">
               <Check className="h-4 w-4 text-[#b3a957]" />
               <span>Direct Farm Relationships</span>
