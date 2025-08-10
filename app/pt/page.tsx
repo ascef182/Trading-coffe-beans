@@ -15,7 +15,7 @@ import { Carousel } from "@/components/ui/carousel";
 
 export default function Home() {
   const stats = [
-    { value: "10+", label: "Anos de Experiência" },
+    { value: "20+", label: "Anos de Experiência" },
     { value: "50K+", label: "Toneladas Exportadas Anualmente" },
     { value: "25+", label: "Variedades de Café" },
     { value: "98%", label: "Média de Pontuação de Qualidade" },

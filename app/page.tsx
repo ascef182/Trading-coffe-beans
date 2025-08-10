@@ -15,7 +15,7 @@ import { Carousel } from "@/components/ui/carousel";
 
 export default function Home() {
   const stats = [
-    { value: "10+", label: "Years of Experience" },
+    { value: "20+", label: "Years of Experience" },
     { value: "50K+", label: "Tons Exported Annually" },
     { value: "25+", label: "Coffee Varieties" },
     { value: "98%", label: "Quality Score Average" },
