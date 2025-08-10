@@ -92,26 +92,24 @@ export function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="w-full px-0 sm:px-2 md:px-4 flex h-16 items-center">
+      <div className="w-full px-4 sm:px-6 md:px-8 flex h-16 items-center justify-between">
         <Link
           href={language === "en" ? "/" : "/pt"}
-          className="flex items-center h-full mr-auto"
+          className="flex items-center h-full"
         >
-          <div className="h-16 w-auto ml-0">
-            <Image
-              src="/Logomarca-Cazarini-12.09.13.svg"
-              alt="Cazarini Trading"
-              width={200}
-              height={64}
-              className="w-[200px] h-[64px] object-contain"
-              priority
-              loading="eager"
-              fetchPriority="high"
-            />
-          </div>
+          <Image
+            src="/Logomarca-Cazarini-12.09.13.svg"
+            alt="Cazarini Trading"
+            width={200}
+            height={64}
+            className="max-h-16 w-auto h-auto object-contain"
+            priority
+            loading="eager"
+            fetchPriority="high"
+          />
         </Link>
 
-        <nav className="flex items-center justify-end space-x-6">
+        <nav className="flex items-center gap-4">
           <div className="hidden md:flex space-x-6">
             {routes[language].map((route) => (
               <Link
@@ -150,7 +148,11 @@ export function Navigation() {
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden w-11 h-11"
+              >
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
               </Button>

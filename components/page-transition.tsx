@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import gsap from "gsap";
+import dynamic from "next/dynamic";
 
 interface PageTransitionProps {
   children: React.ReactNode;
@@ -15,16 +15,20 @@ export function PageTransition({ children }: PageTransitionProps) {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        containerRef.current,
-        { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
-      );
-    }, containerRef);
+    let ctx: any;
+    (async () => {
+      const gsap = (await import("gsap")).default;
+      ctx = gsap.context(() => {
+        gsap.fromTo(
+          containerRef.current,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
+        );
+      }, containerRef);
+    })();
 
     return () => {
-      ctx.revert();
+      ctx?.revert?.();
     };
   }, [pathname]);
 

@@ -132,14 +132,6 @@ export default function GreenCoffeePage() {
         <div className="container max-w-7xl mx-auto px-4 space-y-20">
           {/* What is Green Coffee? */}
           <section className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-96 rounded-2xl overflow-hidden shadow-lg">
-              <Image
-                src="/photos/cafe-verde.jpeg"
-                alt="Green coffee beans close-up"
-                fill
-                className="object-cover"
-              />
-            </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#b3a957]">
                 What is Green Coffee?
@@ -160,6 +152,14 @@ export default function GreenCoffeePage() {
                   ingredients for healthy foods.
                 </p>
               </div>
+            </div>
+            <div className="relative h-96 rounded-2xl overflow-hidden shadow-lg order-first lg:order-none">
+              <Image
+                src="/photos/cafe-verde.jpeg"
+                alt="Green coffee beans close-up"
+                fill
+                className="object-cover"
+              />
             </div>
           </section>
 

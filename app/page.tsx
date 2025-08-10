@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
         {/* Background Carousel with Gradient Overlay */}
         <div className="absolute inset-0">
           <Carousel
@@ -61,16 +61,16 @@ export default function Home() {
         </div>
 
         {/* Content */}
-        <div className="container relative z-10 text-center px-4">
+        <div className="container relative z-10 text-center px-4 pt-8 sm:pt-10">
           {/* Subtle badge */}
-          <div className="inline-block mb-6 px-4 py-2 bg-[#b3a957]/20 backdrop-blur-sm rounded-full border border-[#b3a957]/30">
+          <div className="inline-block mb-6 px-4 py-2 bg-[#b3a957]/20 backdrop-blur-sm rounded-full border border-[#b3a957]/30 max-[375px]:mb-4">
             <span className="text-[#e3e3cd] font-medium tracking-wider">
               SINCE 2009
             </span>
           </div>
 
           {/* Headline with better typography */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl max-[375px]:text-3xl font-bold mb-6 leading-tight">
             <span className="text-white">Premium</span>{" "}
             <span className="text-[#b3a957]">Brazilian</span>
             <br />
@@ -84,7 +84,7 @@ export default function Home() {
           </p>
 
           {/* Buttons with improved hover states */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center max-[375px]:gap-3">
             <Button
               asChild
               size="lg"
@@ -107,7 +107,7 @@ export default function Home() {
           </div>
 
           {/* Trust indicators */}
-          <div className="mt-16 flex flex-wrap justify-center gap-6 text-white/80 text-sm">
+          <div className="mt-16 max-[480px]:mt-12 flex flex-wrap justify-center gap-6 text-white/80 text-sm">
             <div className="flex items-center gap-2">
               <Check className="h-4 w-4 text-[#b3a957]" />
               <span>Direct Farm Relationships</span>

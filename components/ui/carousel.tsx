@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface CarouselProps {
@@ -56,43 +55,20 @@ export function Carousel({
               index === currentIndex ? "opacity-100" : "opacity-0"
             )}
           >
-            <img
+            <Image
               src={image.src}
               alt={image.alt}
-              className="w-full h-full object-cover"
-              loading={index === currentIndex ? "eager" : "lazy"}
-              fetchPriority={
-                index === currentIndex ? ("high" as any) : ("auto" as any)
-              }
-              decoding="async"
+              fill
+              sizes="100vw"
+              priority={index === 0}
+              className="object-cover"
             />
           </div>
         ))}
       </div>
 
-      {/* Navigation Arrows */}
-      <Button
-        onClick={goToPrevious}
-        variant="ghost"
-        size="icon"
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-12 h-12 transition-all duration-200 hover:scale-110 z-10"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="h-6 w-6" />
-      </Button>
-
-      <Button
-        onClick={goToNext}
-        variant="ghost"
-        size="icon"
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-12 h-12 transition-all duration-200 hover:scale-110 z-10"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="h-6 w-6" />
-      </Button>
-
       {/* Dots Indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+      <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-[5] px-2">
         {images.map((_, index) => (
           <button
             key={index}

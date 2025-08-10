@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Seção Hero */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
         {/* Carrossel de fundo com gradiente */}
         <div className="absolute inset-0">
           <Carousel
@@ -61,16 +61,16 @@ export default function Home() {
         </div>
 
         {/* Conteúdo */}
-        <div className="container relative z-10 text-center px-4">
+        <div className="container relative z-10 text-center px-4 pt-8 sm:pt-10">
           {/* Destaque */}
-          <div className="inline-block mb-6 px-4 py-2 bg-[#b3a957]/20 backdrop-blur-sm rounded-full border border-[#b3a957]/30">
+          <div className="inline-block mb-6 px-4 py-2 bg-[#b3a957]/20 backdrop-blur-sm rounded-full border border-[#b3a957]/30 max-[375px]:mb-4">
             <span className="text-[#e3e3cd] font-medium tracking-wider">
               DESDE 2009
             </span>
           </div>
 
           {/* Título principal */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl max-[375px]:text-3xl font-bold mb-6 leading-tight">
             <span className="text-white">Café Verde</span>{" "}
             <span className="text-[#b3a957]">Brasileiro</span>
             <br />
@@ -107,7 +107,7 @@ export default function Home() {
           </div>
 
           {/* Selos de confiança */}
-          <div className="mt-16 flex flex-wrap justify-center gap-6 text-white/80 text-sm">
+          <div className="mt-16 max-[480px]:mt-12 flex flex-wrap justify-center gap-6 text-white/80 text-sm">
             <div className="flex items-center gap-2">
               <Check className="h-4 w-4 text-[#b3a957]" />
               <span>Parceria Direta com Produtores</span>
