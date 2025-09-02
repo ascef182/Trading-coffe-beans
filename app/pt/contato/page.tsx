@@ -84,10 +84,10 @@ export default function PaginaContato() {
                   </CardHeader>
                   <CardContent>
                     <a
-                      href="tel:+553584880810"
+                      href="tel:+5535984160810"
                       className="text-muted-foreground hover:text-primary"
                     >
-                      +55 35 8488 0810
+                      +55 35 98416-0810
                     </a>
                   </CardContent>
                 </Card>
