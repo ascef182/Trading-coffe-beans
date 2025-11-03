@@ -70,8 +70,8 @@ export function Carousel({
         ))}
       </div>
 
-      {/* Coffee icon + Dots container (lower on mobile to avoid overlapping text) */}
-      <div className="absolute bottom-2 sm:bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center space-y-3 sm:space-y-2 px-2">
+      {/* Coffee icon + Dots container (8px from bottom, 8px internal gap). Keep below hero content to avoid overlap */}
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-0 flex flex-col items-center space-y-1 px-1">
         {showCoffeeIcon && <Coffee className="w-5 h-5 text-white/90" />}
         <div className="flex space-x-2">
           {images.map((_, index) => (
