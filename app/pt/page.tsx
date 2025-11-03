@@ -8,8 +8,8 @@ import {
   Download,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { Carousel } from "@/components/ui/carousel";
+import { LazyVideo } from "@/components/ui/lazy-video";
 
 export default function Home() {
   const stats = [
@@ -64,10 +64,10 @@ export default function Home() {
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-white">Não tem hora pro</span>{" "}
-            <span className="text-[#b3a957]">Café</span>
+            <span className="text-white"> CORRETAGEM </span>{" "}
+            <span className="text-[#b3a957]">DE CAFÉ </span>
             <br />
-            <span className="text-white">Corretor 24h</span>
+            <span className="text-white">24/7 GLOBAL & DIGITAL</span>
           </h1>
 
           <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto text-white/90 leading-relaxed">
@@ -153,11 +153,9 @@ export default function Home() {
               </Button>
             </div>
             <div className="relative h-[500px]">
-              <Image
-                src="/photos/coffe.jpg"
-                alt="Seleção de cafés verdes"
-                fill
-                className="object-cover rounded-lg"
+              <LazyVideo
+                src="/videos/coffe-in-a-cup.mp4"
+                className="absolute inset-0 w-full h-full object-cover rounded-lg"
               />
             </div>
           </div>

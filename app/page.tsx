@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Coffee, Check, CheckCircle, Download } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { Carousel } from "@/components/ui/carousel";
+import { LazyVideo } from "@/components/ui/lazy-video";
 
 export default function Home() {
   const stats = [
@@ -147,11 +147,9 @@ export default function Home() {
               </Button>
             </div>
             <div className="relative h-[500px]">
-              <Image
-                src="/photos/coffe.jpg"
-                alt="Green coffee selection"
-                fill
-                className="object-cover rounded-lg"
+              <LazyVideo
+                src="/videos/coffe-in-a-cup.mp4"
+                className="absolute inset-0 w-full h-full object-cover rounded-lg"
               />
             </div>
           </div>

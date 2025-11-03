@@ -126,8 +126,8 @@ const Timeline: React.FC<TimelineProps> = ({ events }) => (
           >
             <div className="bg-white p-6 sm:p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300">
               <div className="flex flex-col sm:flex-row items-start sm:items-center mb-4">
-                <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary grid place-items-center text-white font-bold mb-2 sm:mb-0 sm:mr-4 text-sm px-1">
-                  <span className="text-center leading-tight">
+              <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary grid place-items-center text-white font-bold mb-2 sm:mb-0 sm:mr-4 px-1">
+                  <span className={`text-center leading-tight ${event.year.length > 4 ? "text-[10px]" : "text-sm"}`}>
                     {event.year}
                   </span>
                 </div>
